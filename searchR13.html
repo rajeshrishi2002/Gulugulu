@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gulugulu</title>
+    <link rel="icon" href="icon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <script>
+        function toggleContent() {
+            var content = document.getElementById("extra-content");
+            var icon = document.getElementById("toggle-icon");
+            content.style.display = content.style.display === "none" ? "block" : "none";
+            icon.classList.toggle("fa-chevron-down");
+            icon.classList.toggle("fa-chevron-up");
+        }
+
+        function toggleSecondContent() {
+            var content = document.getElementById("second-extra-content");
+            var icon = document.getElementById("toggle-icon-2");
+            content.style.display = content.style.display === "none" ? "block" : "none";
+            icon.classList.toggle("fa-chevron-down");
+            icon.classList.toggle("fa-chevron-up");
+        }
+
+        function toggleNewsContent(newsId, iconId) {
+            var content = document.getElementById(newsId);
+            var icon = document.getElementById(iconId);
+            content.style.display = content.style.display === "none" ? "block" : "none";
+            icon.classList.toggle("fa-chevron-down");
+            icon.classList.toggle("fa-chevron-up");
+        }
+        function setActiveTab(tab) {
+    var tabs = document.querySelectorAll('.tab');
+    tabs.forEach(function (tabElement) {
+        tabElement.classList.remove('border-white', 'text-white');
+        tabElement.classList.add('border-transparent', 'text-gray-400');
+    });
+    tab.classList.remove('border-transparent', 'text-gray-400');
+    tab.classList.add('border-white', 'text-white');
+
+    var searchResults = document.getElementById("search-results");
+    var imageContainer = document.getElementById("image-container");
+    var videoContainer = document.getElementById("video-container");
+    var peopleAskContainer = document.getElementById("people-ask-container");
+    var shoppingText = document.getElementById("shopping-text");
+    var surpriseText = document.getElementById("surprise-text");
+    var newsContainer = document.getElementById("news-container");
+
+    if (tab.textContent === "Images") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "flex";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "Videos") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "block";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "Shopping") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "block"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "Surprise") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "block"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "News") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "block"; // Show news container
+    } else {
+        searchResults.style.display = "block";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "block"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    }
+}
+
+        function activateTab(tab) {
+            const tabs = ['home', 'search', 'saved'];
+            tabs.forEach((t) => {
+                const icon = document.getElementById(`${t}-icon`);
+                const text = document.getElementById(`${t}-text`);
+                icon.classList.remove('text-blue-500');
+                icon.classList.add('text-gray-400');
+                text.classList.remove('text-blue-500');
+                text.classList.add('text-gray-400');
+            });
+
+            const activeIcon = document.getElementById(`${tab}-icon`);
+            const activeText = document.getElementById(`${tab}-text`);
+            activeIcon.classList.add('text-blue-500');
+            activeText.classList.add('text-blue-500');
+
+            if (tab === 'home') {
+                window.location.href = 'index.html';
+            } else if (tab === 'search') {
+                window.location.href = 'search.html';
+            } else if (tab === 'saved') {
+                window.location.href = 'index.html?saved';
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-white font-roboto">
+<div class="max-w-md mx-auto p-4">
+    <!-- Google Search Header -->
+    <div class="flex items-center justify-center mb-1">
+        <img alt="" style="height: 70px; width: auto;" src="logo.png"/>
+    </div>
+    <!-- Search Bar -->
+    <div class="relative mb-4">
+        <div class="flex items-center">
+            <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
+            <input class="bg-gray-800 text-white rounded-full py-2 pl-10 pr-16 w-full max-w-3xl w-full overflow-x-auto whitespace-nowrap" type="text" value="How to support my wife dreams" />
+            <img src="mic.png" class="absolute right-10 top-2.5" style="width: 25px;">
+            <img src="camera.png" class="absolute right-3 top-2.5" style="width: 25px;">
+        </div>
+    </div>
+    
+<style>
+input {
+    min-width: 0; /* Prevents input from exceeding its container */
+    max-width: calc(100% - 50px); /* Adjust this based on your icon sizes */
+    white-space: nowrap; /* Ensures text stays on one line */
+}
+
+
+</style> 
+    <!-- Tabs -->
+    <div class="flex space-x-4 mb-4">
+        <span class="tab border-b-2 border-white pb-1 cursor-pointer text-white" onclick="setActiveTab(this)">All</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Images</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Videos</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">News</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Shopping</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Surprise</span>
+    </div>
+    
+    <!-- News Container -->
+    <div id="news-container" style="display: none;">
+        <!-- Good News -->
+        <div class="bg-gray-800 rounded-lg p-4 mb-4">
+            <div class="flex justify-between">
+                <p class="text-lg">Good News</p>
+                <div class="bg-gray-700 rounded-full p-0 w-6 h-6 flex items-center justify-center cursor-pointer" onclick="toggleNewsContent('good-news-content', 'good-news-icon')">
+                    <i class="fas fa-chevron-down text-white" id="good-news-icon"></i>
+                </div>
+            </div>
+            <div id="good-news-content" class="mt-2" style="display: none;">
+                <p>I will always stand by your side, no matter the situation,</p>
+                <p> Through every challenge and joy, my commitment to you remains <span class="bg-blue-700">unbreakable</span>🫂</p>
+            </div>
+        </div>
+        
+        <!-- Bad News -->
+        <div class="bg-gray-800 rounded-lg p-4">
+            <div class="flex justify-between">
+                <p class="text-lg">Bad News</p>
+                <div class="bg-gray-700 rounded-full p-0 w-6 h-6 flex items-center justify-center cursor-pointer" onclick="toggleNewsContent('bad-news-content', 'bad-news-icon')">
+                    <i class="fas fa-chevron-down text-white" id="bad-news-icon"></i>
+                </div>
+            </div>
+            <div id="bad-news-content" class="mt-2" style="display: none;">
+                <p>Naa iruka varaikum bad news unkitta vara vidamaaten</p>
+                <p><span class="bg-blue-700">No bad news</span>🥰💗</p>
+            </div>
+        </div>
+    </div>
+     <!-- Shopping Container -->
+     <div id="shopping-text" style="display: none;">
+        <p class="text-lg">Poogalaamaa😅💗</p><br>
+        <img src="shopping.gif" style="border-radius: 13px;">
+    </div>
+
+    <!-- Surprise Container -->
+    <div id="surprise-text" style="display: none;">
+        <p class="text-lg">Naanthaan😅💗</p><br>
+        <img src="surprise.gif" style="border-radius: 13px;">
+    </div>
+    <!-- Search Result -->
+    <div id="search-results" class="mb-4">
+        <p class="text-gray-400">
+            Did you mean:
+            <span class="text-blue-400">
+                <i>Her dream is your dream too</i>
+            </span>
+        </p><br>
+        <p class="text-lg">
+            I support my wife by being her biggest fan🥰,<br> celebrating every little achievement like when she finishes her meal or remembers where she left her keys after a mini treasure hunt😁<br>I love seeing her smile light up the room💗,and 
+            <span class="bg-blue-700">I’m committed to being her constant , because her happiness is my favorite accomplishment,</span>
+        </p>
+         <!-- Word Coach Section -->
+    <div class="mt-6 w-full max-w-2xl p-8 rounded-lg">
+        <div class="flex justify-between items-center">
+            <div class="grid grid-cols-3 gap-4 mb-4">
+                <div class="w-24 h-24 border border-white flex items-center justify-center cursor-pointer" style="border-radius: 10px;" onclick="addText(this)"></div>
+                <div class="w-24 h-24 border border-white flex items-center justify-center cursor-pointer" style="border-radius: 10px;" onclick="addText(this)"></div>
+                <div class="w-24 h-24 border border-white flex items-center justify-center cursor-pointer" style="border-radius: 10px;" onclick="addText(this)"></div>
+                <div class="w-24 h-24 border border-white flex items-center justify-center cursor-pointer" style="border-radius: 10px;" onclick="addText(this)"></div>
+                <div class="w-24 h-24 border border-white flex items-center justify-center cursor-pointer" style="border-radius: 10px;" onclick="addText(this)"></div>
+                <div class="w-24 h-24 border border-white flex items-center justify-center cursor-pointer" style="border-radius: 10px;" onclick="addText(this)"></div>
+                <div class="w-24 h-24 border border-white flex items-center justify-center cursor-pointer" style="border-radius: 10px;" onclick="addText(this)"></div>
+                <div class="w-24 h-24 border border-white flex items-center justify-center cursor-pointer" style="border-radius: 10px;" onclick="addText(this)"></div>
+                <div class="w-24 h-24 border border-white flex items-center justify-center cursor-pointer" style="border-radius: 10px;" onclick="addText(this)"></div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Images -->
+    <div id="image-container" class="w-full flex flex-wrap justify-center bg-gray-900 p-0" style="display: none;">
+        <div class="w-1/2 p-2">
+            <div class="bg-gray-800 rounded-lg p-2">
+                <img alt="Image 1" class="rounded-lg" height="150" src="p14.jpeg" width="150"/>
+                <div class="text-gray-400 text-sm mt-0">Our Dream</div>
+            </div>
+        </div>
+        <div class="w-1/2 p-2">
+            <div class="bg-gray-800 rounded-lg p-2">
+                <img alt="Image 2" class="rounded-lg" height="150" src="p15.jpeg" width="150"/>
+                <div class="text-gray-400 text-sm mt-2">Our Dream</div>
+            </div>
+        </div>
+        <div class="w-1/2 p-2">
+            <div class="bg-gray-800 rounded-lg p-2">
+                <img alt="Image 1" class="rounded-lg" height="150" src="p16.jpeg" width="150"/>
+                <div class="text-gray-400 text-sm mt-2">Our Dream</div>
+            </div>
+        </div>
+        <div class="w-1/2 p-2">
+            <div class="bg-gray-800 rounded-lg p-2">
+                <img alt="Image 2" class="rounded-lg" height="150" src="p17.jpeg" width="150"/>
+                <div class="text-gray-400 text-sm mt-2">Our Dream</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Container -->
+    <div id="video-container" style="display: none;">
+        <div class="bg-gray-800 rounded-lg p-0">
+            <video controls class="w-full rounded-lg">
+                <source src="video8.mp4" type="video/mp4">
+            </video>
+            <div class="text-gray-400 text-sm mt-1">Dream Life for Us</div>
+        </div><br>
+        <div class="bg-gray-800 rounded-lg p-0">
+            <video controls class="w-full rounded-lg">
+                <source src="video9.mp4" type="video/mp4">
+            </video>
+            <div class="text-gray-400 text-sm mt-1">Till The End</div>
+        </div>
+    </div>
+
+
+    <!-- People Also Ask -->
+    <div id="people-ask-container" style="display: block;">
+       
+   
+    </div>
+
+    <!-- Footer Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-gray-800 p-2 flex justify-around items-center">
+        <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('home')">
+            <i class="fas fa-home text-gray-400" id="home-icon"></i>
+            <span class="text-xs text-gray-400" id="home-text">Home</span>
+        </div>
+        <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('search')">
+            <i class="fas fa-search text-blue-400" id="search-icon"></i>
+            <span class="text-xs text-blue-400" id="search-text">Search</span>
+        </div>
+        <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('saved')">
+            <i class="fas fa-bookmark text-gray-400" id="saved-icon"></i>
+            <span class="text-xs text-gray-400" id="saved-text">Saved</span>
+        </div>
+    </div>
+</div>
+<style>
+    @keyframes glow {
+        0% {
+            text-shadow: 0 0 10px rgb(255, 0, 183), 0 0 20px rgb(255, 0, 183), 0 0 30px rgb(255, 0, 183), 0 0 40px rgb(255, 0, 183), 0 0 50px rgb(255, 0, 183), 0 0 60px rgb(255, 0, 183), 0 0 70px rgb(255, 0, 183);
+        }
+        100% {
+            text-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #00f, 0 0 40px #00f, 0 0 50px #00f, 0 0 60px #00f, 0 0 70px #00f;
+        }
+    }
+    .glow {
+        animation: glow 1s infinite alternate;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+        text-shadow: 0 0 10px rgb(255, 0, 123), 0 0 20px rgb(255, 0, 123), 0 0 30px rgb(255, 0, 123), 0 0 40px rgb(255, 0, 123), 0 0 50px rgb(255, 0, 123), 0 0 60px rgb(255, 0, 123), 0 0 70px rgb(255, 0, 123);
+        animation: glow 1s infinite alternate;
+    }
+    .blur {
+        filter: blur(5px);
+    }
+</style>  
+<script>
+    function addText(element) {
+        if (!element.innerHTML) {
+            element.innerHTML = '<span class="text-white-500 text-4xl glow">A</span>';
+            setTimeout(addRandomR, 700);
+            setTimeout(checkWin, 100);
+        }
+    }
+
+    function addRandomR() {
+        const boxes = document.querySelectorAll('.grid div');
+        const emptyBoxes = Array.from(boxes).filter(box => !box.innerHTML);
+        if (emptyBoxes.length > 0) {
+            const randomBox = emptyBoxes[Math.floor(Math.random() * emptyBoxes.length)];
+            randomBox.innerHTML = '<span class=" text-4xl glow">R</span>';
+        }
+    }
+
+    function checkWin() {
+        const boxes = document.querySelectorAll('.grid div');
+        const winPatterns = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+            [0, 4, 8], [2, 4, 6]             // Diagonals
+        ];
+
+        winPatterns.forEach(pattern => {
+            const [a, b, c] = pattern;
+            if (boxes[a].innerText === 'A' && boxes[b].innerText === 'A' && boxes[c].innerText === 'A') {
+                drawLine(a, c);
+                displayWinMessage();
+            }
+        });
+    }
+
+    function drawLine(startIndex, endIndex) {
+        const boxes = document.querySelectorAll('.grid div');
+        const startBox = boxes[startIndex].getBoundingClientRect();
+        const endBox = boxes[endIndex].getBoundingClientRect();
+
+        const line = document.createElement('div');
+        line.classList.add('line');
+
+        const startX = (startBox.left + startBox.right) / 2;
+        const startY = (startBox.top + startBox.bottom) / 2;
+        const endX = (endBox.left + endBox.right) / 2;
+        const endY = (endBox.top + endBox.bottom) / 2;
+
+        const length = Math.sqrt((endX - startX) ** 2 + (endY - startY) ** 2);
+        const angle = Math.atan2(endY - startY, endX - startX) * 180 / Math.PI;
+
+        line.style.width = `${length}px`;
+        line.style.transform = `rotate(${angle}deg)`;
+        line.style.left = `${startX}px`;
+        line.style.top = `${startY}px`;
+
+        document.body.appendChild(line);
+    }
+    function displayWinMessage() {
+    const overlay = document.createElement('div');
+    overlay.classList.add('overlay');
+    overlay.innerText = 'My Pondati Always Wins';
+
+    // Add click event to reload the page
+    overlay.addEventListener('click', () => {
+        window.location.href = 'searchR13.html'; // Change to your target URL
+    });
+
+    document.body.appendChild(overlay);
+
+    const boxes = document.querySelectorAll('.grid div');
+    boxes.forEach(box => box.classList.add('blur'));
+}
+
+
+    function resetGame() {
+        const boxes = document.querySelectorAll('.grid div');
+        boxes.forEach(box => {
+            box.innerHTML = '';
+            box.classList.remove('blur');
+        });
+        const lines = document.querySelectorAll('.line');
+        lines.forEach(line => line.remove());
+        const overlays = document.querySelectorAll('.overlay');
+        overlays.forEach(overlay => overlay.remove());
+    }
+</script>
+</body>
+</html>

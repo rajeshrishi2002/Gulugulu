@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gulugulu</title>
+    <link rel="icon" href="icon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <script>
+        function toggleContent() {
+            var content = document.getElementById("extra-content");
+            var icon = document.getElementById("toggle-icon");
+            content.style.display = content.style.display === "none" ? "block" : "none";
+            icon.classList.toggle("fa-chevron-down");
+            icon.classList.toggle("fa-chevron-up");
+        }
+
+        function toggleSecondContent() {
+            var content = document.getElementById("second-extra-content");
+            var icon = document.getElementById("toggle-icon-2");
+            content.style.display = content.style.display === "none" ? "block" : "none";
+            icon.classList.toggle("fa-chevron-down");
+            icon.classList.toggle("fa-chevron-up");
+        }
+
+        function toggleNewsContent(newsId, iconId) {
+            var content = document.getElementById(newsId);
+            var icon = document.getElementById(iconId);
+            content.style.display = content.style.display === "none" ? "block" : "none";
+            icon.classList.toggle("fa-chevron-down");
+            icon.classList.toggle("fa-chevron-up");
+        }
+        function setActiveTab(tab) {
+    var tabs = document.querySelectorAll('.tab');
+    tabs.forEach(function (tabElement) {
+        tabElement.classList.remove('border-white', 'text-white');
+        tabElement.classList.add('border-transparent', 'text-gray-400');
+    });
+    tab.classList.remove('border-transparent', 'text-gray-400');
+    tab.classList.add('border-white', 'text-white');
+
+    var searchResults = document.getElementById("search-results");
+    var imageContainer = document.getElementById("image-container");
+    var videoContainer = document.getElementById("video-container");
+    var peopleAskContainer = document.getElementById("people-ask-container");
+    var shoppingText = document.getElementById("shopping-text");
+    var surpriseText = document.getElementById("surprise-text");
+    var newsContainer = document.getElementById("news-container");
+
+    if (tab.textContent === "Images") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "flex";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "Videos") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "block";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "Shopping") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "block"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "Surprise") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "block"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "News") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "block"; // Show news container
+    } else {
+        searchResults.style.display = "block";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "block"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    }
+}
+
+        function activateTab(tab) {
+            const tabs = ['home', 'search', 'saved'];
+            tabs.forEach((t) => {
+                const icon = document.getElementById(`${t}-icon`);
+                const text = document.getElementById(`${t}-text`);
+                icon.classList.remove('text-blue-500');
+                icon.classList.add('text-gray-400');
+                text.classList.remove('text-blue-500');
+                text.classList.add('text-gray-400');
+            });
+
+            const activeIcon = document.getElementById(`${tab}-icon`);
+            const activeText = document.getElementById(`${tab}-text`);
+            activeIcon.classList.add('text-blue-500');
+            activeText.classList.add('text-blue-500');
+
+            if (tab === 'home') {
+                window.location.href = 'index.html';
+            } else if (tab === 'search') {
+                window.location.href = 'search.html';
+            } else if (tab === 'saved') {
+                window.location.href = 'index.html?saved';
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-white font-roboto">
+<div class="max-w-md mx-auto p-4">
+    <!-- Google Search Header -->
+    <div class="flex items-center justify-center mb-1">
+        <img alt="" style="height: 70px; width: auto;" src="logo.png"/>
+    </div>
+    <!-- Search Bar -->
+    <div class="relative mb-4">
+        <div class="flex items-center">
+            <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
+            <input class="bg-gray-800 text-white rounded-full py-2 pl-10 pr-16 w-full max-w-3xl w-full overflow-x-auto whitespace-nowrap" type="text" value="How to calculate our love" />
+            <img src="mic.png" class="absolute right-10 top-2.5" style="width: 25px;">
+            <img src="camera.png" class="absolute right-3 top-2.5" style="width: 25px;">
+        </div>
+    </div>
+    
+<style>
+input {
+    min-width: 0; /* Prevents input from exceeding its container */
+    max-width: calc(100% - 50px); /* Adjust this based on your icon sizes */
+    white-space: nowrap; /* Ensures text stays on one line */
+    outline: none;
+    box-shadow: none;
+}
+
+    @keyframes flicker {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+ 
+    .flicker {
+      animation: flicker 1s infinite;
+    }
+
+    .multicolor-text {
+        display: inline-block;
+        animation: rainbow 2s linear infinite, pulse 1s infinite;
+    }
+    @keyframes rainbow {
+        0% { color: red; }
+        14% { color: orange; }
+        28% { color: yellow; }
+        42% { color: green; }
+        56% { color: rgb(0, 242, 255); }
+        70% { color: rgb(186, 91, 255); }
+        84% { color: violet; }
+        100% { color: red; }
+    }
+    @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.5; }
+    }
+   </style>
+   <script>
+    let typingTimeout;
+ 
+    function toggleDropdown(id) {
+      var dropdown = document.getElementById(id);
+      dropdown.classList.toggle("hidden");
+    }
+ 
+    function selectLanguage(language, dropdownId, displayId) {
+      document.getElementById(displayId).innerText = language;
+      toggleDropdown(dropdownId);
+    }
+ 
+    function translateText() {
+      const translationDisplay = document.getElementById('translationDisplay');
+      translationDisplay.innerHTML = 'Translating<span class="flicker">...</span>';
+      
+      clearTimeout(typingTimeout);
+typingTimeout = setTimeout(() => {
+  const words = ['நான்', 'உன்னை', 'காதலிக்கிறேன்','💗'];
+  translationDisplay.innerHTML = ''; // Use innerHTML instead of innerText
+  words.forEach((word, index) => {
+    setTimeout(() => {
+      translationDisplay.innerHTML += word + '&nbsp;'; // Add a non-breaking space
+    }, index * 500);
+  });
+}, 1000);
+    }
+    function displayLoveMessage() {
+    const words = "Even a calculator can't calculate how much I love you".split(' ');
+    display.innerHTML = words.map(word => `<span class="multicolor-text"><strong>${word}</strong></span>`).join(' ');
+}
+
+   </script>   
+    <!-- Tabs -->
+    <div class="flex space-x-4 mb-4">
+        <span class="tab border-b-2 border-white pb-1 cursor-pointer text-white" onclick="setActiveTab(this)">All</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Images</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Videos</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">News</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Shopping</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Surprise</span>
+    </div>
+    
+    <!-- News Container -->
+    <div id="news-container" style="display: none;">
+        <!-- Good News -->
+        <div class="bg-gray-800 rounded-lg p-4 mb-4">
+            <div class="flex justify-between">
+                <p class="text-lg">Good News</p>
+                <div class="bg-gray-700 rounded-full p-0 w-6 h-6 flex items-center justify-center cursor-pointer" onclick="toggleNewsContent('good-news-content', 'good-news-icon')">
+                    <i class="fas fa-chevron-down text-white" id="good-news-icon"></i>
+                </div>
+            </div>
+            <div id="good-news-content" class="mt-2" style="display: none;">
+                <p>I will always stand by your side, no matter the situation,</p>
+                <p> Through every challenge and joy, my commitment to you remains <span class="bg-blue-700">unbreakable</span>🫂</p>
+            </div>
+        </div>
+        
+        <!-- Bad News -->
+        <div class="bg-gray-800 rounded-lg p-4">
+            <div class="flex justify-between">
+                <p class="text-lg">Bad News</p>
+                <div class="bg-gray-700 rounded-full p-0 w-6 h-6 flex items-center justify-center cursor-pointer" onclick="toggleNewsContent('bad-news-content', 'bad-news-icon')">
+                    <i class="fas fa-chevron-down text-white" id="bad-news-icon"></i>
+                </div>
+            </div>
+            <div id="bad-news-content" class="mt-2" style="display: none;">
+                <p>Naa iruka varaikum bad news unkitta vara vidamaaten</p>
+                <p><span class="bg-blue-700">No bad news</span>🥰💗</p>
+            </div>
+        </div>
+    </div>
+     <!-- Shopping Container -->
+     <div id="shopping-text" style="display: none;">
+        <p class="text-lg">Poogalaamaa😅💗</p>
+        <img src="shopping.gif" style="border-radius: 13px;">
+    </div>
+
+    <!-- Surprise Container -->
+    <div id="surprise-text" style="display: none;">
+        <p class="text-lg">Naanthaan😅💗</p>
+        <img src="surprise.gif" style="border-radius: 13px;">
+    </div>
+    <!-- Search Result -->
+    <div id="search-results" class="mb-4">
+        <div class="w-full bg-gray-800 rounded-lg p-4 mb-4">
+            <div class="flex justify-between items-center mb-2">
+             <i class="fas fa-heart text-gray-400 cursor-pointer animate-pulse" onclick="displayLoveMessage()">
+             </i>
+            </div>
+            <div id="displayy" class="text-4xl text-right whitespace-pre-line">
+            </div>
+           </div>
+<!-- Calculator Buttons -->
+<div class="grid grid-cols-4 gap-2 w-full">
+    <button class="bg-gray-700 p-4 rounded-lg" onclick="appendToDisplay('ME')">
+     ME
+    </button>
+    <button class="bg-gray-700 p-4 rounded-lg" onclick="appendToDisplay('YOU')">
+     YOU
+    </button>
+    <button class="bg-gray-700 p-4 rounded-lg"onclick="appendToDisplay('SMILE')">
+     SMILE
+    </button>
+    <button class="bg-gray-700 p-4 rounded-lg" onclick="appendToDisplay('+')">
+    +
+    </button>
+    <button class="bg-gray-700 p-4 rounded-lg" onclick="appendToDisplay('MISTAKE')">
+     MISTAKE
+    </button>
+    <button class="bg-gray-700 p-4 rounded-lg" onclick="appendToDisplay('LOVE')">
+     LOVE
+    </button>
+    <button class="bg-gray-700 p-4 rounded-lg" onclick="appendToDisplay('HAPPY')">
+     HAPPY
+    </button>
+    <button class="bg-gray-700 p-4 rounded-lg" onclick="appendToDisplay('-')">
+    -
+    </button>
+    <button class="bg-gray-700 p-4 rounded-lg" onclick="appendToDisplay('SAD')">
+     SAD
+    </button>
+    <button class="bg-gray-700 p-4 rounded-lg" onclick="clearDisplay()">
+     CE
+    </button>
+    <button class="bg-gray-700 p-4 rounded-lg" onclick="deleteLastCharacter()">
+    DEL
+    </button>
+    <button class="bg-blue-600 p-4 rounded-lg" onclick="calculateResult()">
+    =
+    </button>
+
+
+
+
+   </div>
+  </div>
+    <!-- Images -->
+    <div id="image-container" class="w-full flex flex-wrap justify-center bg-gray-900 p-0" style="display: none;">
+        <div class="w-1/2 p-2">
+            <div class="bg-gray-800 rounded-lg p-2">
+                <img alt="Image 1" class="rounded-lg" height="150" src="p6.jpeg" width="150"/>
+                <div class="text-gray-400 text-sm mt-0">Infinity</div>
+            </div>
+        </div>
+        <div class="w-1/2 p-2">
+            <div class="bg-gray-800 rounded-lg p-2">
+                <img alt="Image 2" class="rounded-lg" height="150" src="p7.jpeg" width="150"/>
+                <div class="text-gray-400 text-sm mt-2">Infinity</div>
+            </div>
+        </div>
+        <div class="w-1/2 p-2">
+            <div class="bg-gray-800 rounded-lg p-2">
+                <img alt="Image 1" class="rounded-lg" height="150" src="p8.jpeg" width="150"/>
+                <div class="text-gray-400 text-sm mt-2">Infinity</div>
+            </div>
+        </div>
+        <div class="w-1/2 p-2">
+            <div class="bg-gray-800 rounded-lg p-2">
+                <img alt="Image 2" class="rounded-lg" height="150" src="p9.jpeg" width="150"/>
+                <div class="text-gray-400 text-sm mt-2">Infinity</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Container -->
+    <div id="video-container" style="display: none;">
+        <div class="bg-gray-800 rounded-lg p-0">
+            <video controls class="w-full rounded-lg">
+                <source src="video3.mp4" type="video/mp4">
+            </video>
+            <div class="text-gray-400 text-sm mt-1">😘🥰💗</div>
+        </div><br>
+        <div class="bg-gray-800 rounded-lg p-0">
+            <video controls class="w-full rounded-lg">
+                <source src="video4.mp4" type="video/mp4">
+            </video>
+            <div class="text-gray-400 text-sm mt-1">😘🥰💗</div>
+        </div>
+    </div>
+
+    <!-- People Also Ask -->
+    <div id="people-ask-container" style="display: block;">
+        <div class="pt-3">
+            <p class="text-lg" style="font-size: 22px;">People also ask</p><br>
+            <div class="mt-2 flex items-center justify-between">
+                <p class="text-white">How much do do you love her?</p>
+                <div class="bg-gray-700 rounded-full p-0 w-6 h-6 flex items-center justify-center cursor-pointer" onclick="toggleContent()">
+                    <i class="fas fa-chevron-down text-white" id="toggle-icon"></i>
+                </div>
+            </div>
+            <div class="mt-2" id="extra-content" style="display: none;">
+                <p>I love her more than words can express, <span class="bg-blue-700">infinitely,</span>,<br>
+                    I love her more than the stars in the sky💗😘🫂</p>
+            </div>
+            <hr class="border-gray-700 my-4">
+        </div>
+    </div>
+
+    <!-- Footer Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-gray-800 p-2 flex justify-around items-center">
+        <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('home')">
+            <i class="fas fa-home text-gray-400" id="home-icon"></i>
+            <span class="text-xs text-gray-400" id="home-text">Home</span>
+        </div>
+        <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('search')">
+            <i class="fas fa-search text-blue-400" id="search-icon"></i>
+            <span class="text-xs text-blue-400" id="search-text">Search</span>
+        </div>
+        <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('saved')">
+            <i class="fas fa-bookmark text-gray-400" id="saved-icon"></i>
+            <span class="text-xs text-gray-400" id="saved-text">Saved</span>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    let display = document.getElementById('displayy');
+ 
+         function appendToDisplay(value) {
+             display.innerText += value;
+         }
+ 
+         function clearDisplay() {
+             display.innerText = '';
+         }
+         function deleteLastCharacter() {
+            display.innerText = display.innerText.slice(0, -1);
+        }
+
+         function calculateResult() {
+    const input = display.innerText.trim(); // Get the trimmed input
+
+    if (input === 'YOU+ME') {
+        display.innerText = 'YOU + ME\n= 3 MAMA';
+    } else if (input === 'ME+MISTAKE') {
+        display.innerText = "ME + MISTAKE\n= I'LL SAY SORRY";
+    } else if (input === 'YOU+SMILE') {
+        display.innerText = "YOU + SMILE\n=I'M HAPPY";
+    } else if (input === 'YOU-SMILE') {
+        display.innerText = "YOU - SMILE\n=I'LL MAKE YOU SMILE";
+    }
+
+    else if (input === 'YOU+HAPPY') {
+        display.innerText = "YOU + HAPPY\n=ALL I NEED";
+    } else if (input === 'YOU-HAPPY') {
+        display.innerText = "YOU - HAPPY\n=I'LL MAKE YOU HAPPY";
+    }
+
+    else if (input === 'YOU+SAD') {
+        display.innerText = "YOU + SAD\n=I'LL MAKE YOU HAPPY";
+    } else if (input === 'YOU-HAPPY') {
+        display.innerText = "YOU - SAD\n=ALL I NEED";
+    }
+    
+    else if (input === 'ME+LOVE') {
+        display.innerText = "ME + LOVE\n= 100%";
+    } else if (input === 'YOU+LOVE') {
+        display.innerText = "YOU + LOVE\n= 100%";
+    } else if (input === 'YOU+MISTAKE') {
+        display.innerText = "YOU + MISTAKE\n= APPOVUM I'LL SAY SORRY";
+    } else if (input === 'ME-YOU') {
+        display.innerText = "ME - YOU\n= I'M NOTHING";
+    } else if (input === 'YOU-ME') {  // Added YOU - ME case
+        display.innerText = "YOU - ME\n= I'M NOTHING";
+    } else if (input === 'ME-LOVE') {
+        display.innerText = "ME - LOVE\n= VAIPE ILLA";
+    } else {
+        try {
+            let result = eval(input);
+            display.innerText += '\n= ' + result;
+        } catch (error) {
+            display.innerText = '😁😅';
+        }
+    }
+}
+
+
+
+   </script>
+</html>

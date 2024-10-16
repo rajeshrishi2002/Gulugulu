@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gulugulu</title>
+    <link rel="icon" href="icon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <style>
+        .italic {
+    font-style: italic;
+         }
+
+    </style>
+    <script>
+        function toggleContent() {
+            var content = document.getElementById("extra-content");
+            var icon = document.getElementById("toggle-icon");
+            content.style.display = content.style.display === "none" ? "block" : "none";
+            icon.classList.toggle("fa-chevron-down");
+            icon.classList.toggle("fa-chevron-up");
+        }
+
+        function toggleSecondContent() {
+            var content = document.getElementById("second-extra-content");
+            var icon = document.getElementById("toggle-icon-2");
+            content.style.display = content.style.display === "none" ? "block" : "none";
+            icon.classList.toggle("fa-chevron-down");
+            icon.classList.toggle("fa-chevron-up");
+        }
+
+        function toggleNewsContent(newsId, iconId) {
+            var content = document.getElementById(newsId);
+            var icon = document.getElementById(iconId);
+            content.style.display = content.style.display === "none" ? "block" : "none";
+            icon.classList.toggle("fa-chevron-down");
+            icon.classList.toggle("fa-chevron-up");
+        }
+        function setActiveTab(tab) {
+    var tabs = document.querySelectorAll('.tab');
+    tabs.forEach(function (tabElement) {
+        tabElement.classList.remove('border-white', 'text-white');
+        tabElement.classList.add('border-transparent', 'text-gray-400');
+    });
+    tab.classList.remove('border-transparent', 'text-gray-400');
+    tab.classList.add('border-white', 'text-white');
+
+    var searchResults = document.getElementById("search-results");
+    var imageContainer = document.getElementById("image-container");
+    var videoContainer = document.getElementById("video-container");
+    var peopleAskContainer = document.getElementById("people-ask-container");
+    var shoppingText = document.getElementById("shopping-text");
+    var surpriseText = document.getElementById("surprise-text");
+    var newsContainer = document.getElementById("news-container");
+
+    if (tab.textContent === "Images") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "flex";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "Videos") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "block";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "Shopping") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "block"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "Surprise") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "block"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "News") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "block"; // Show news container
+    } else {
+        searchResults.style.display = "block";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "block"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    }
+}
+
+        function activateTab(tab) {
+            const tabs = ['home', 'search', 'saved'];
+            tabs.forEach((t) => {
+                const icon = document.getElementById(`${t}-icon`);
+                const text = document.getElementById(`${t}-text`);
+                icon.classList.remove('text-blue-500');
+                icon.classList.add('text-gray-400');
+                text.classList.remove('text-blue-500');
+                text.classList.add('text-gray-400');
+            });
+
+            const activeIcon = document.getElementById(`${tab}-icon`);
+            const activeText = document.getElementById(`${tab}-text`);
+            activeIcon.classList.add('text-blue-500');
+            activeText.classList.add('text-blue-500');
+
+            if (tab === 'home') {
+                window.location.href = 'index.html';
+            } else if (tab === 'search') {
+                window.location.href = 'search.html';
+            } else if (tab === 'saved') {
+                window.location.href = 'index.html?saved';
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-white font-roboto">
+<div class="max-w-md mx-auto p-4">
+    <!-- Google Search Header -->
+    <div class="flex items-center justify-center mb-1">
+        <img alt="" style="height: 70px; width: auto;" src="logo.png"/>
+    </div>
+    <!-- Search Bar -->
+    <div class="relative mb-4">
+        <div class="flex items-center">
+            <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
+            <input class="bg-gray-800 text-white rounded-full py-2 pl-10 pr-16 w-full max-w-3xl w-full overflow-x-auto whitespace-nowrap" type="text" value="How to apologize to my wife after a small fight" />
+            <img src="mic.png" class="absolute right-10 top-2.5" style="width: 25px;">
+            <img src="camera.png" class="absolute right-3 top-2.5" style="width: 25px;">
+        </div>
+    </div>
+    
+<style>
+input {
+    min-width: 0; /* Prevents input from exceeding its container */
+    max-width: calc(100% - 50px); /* Adjust this based on your icon sizes */
+    white-space: nowrap; /* Ensures text stays on one line */
+}
+
+
+</style>    
+    <!-- Tabs -->
+    <div class="flex space-x-4 mb-4">
+        <span class="tab border-b-2 border-white pb-1 cursor-pointer text-white" onclick="setActiveTab(this)">All</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Images</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Videos</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">News</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Shopping</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Surprise</span>
+    </div>
+    
+    <!-- News Container -->
+    <div id="news-container" style="display: none;">
+        <!-- Good News -->
+        <div class="bg-gray-800 rounded-lg p-4 mb-4">
+            <div class="flex justify-between">
+                <p class="text-lg">Good News</p>
+                <div class="bg-gray-700 rounded-full p-0 w-6 h-6 flex items-center justify-center cursor-pointer" onclick="toggleNewsContent('good-news-content', 'good-news-icon')">
+                    <i class="fas fa-chevron-down text-white" id="good-news-icon"></i>
+                </div>
+            </div>
+            <div id="good-news-content" class="mt-2" style="display: none;">
+                <p>I will always stand by your side, no matter the situation,</p>
+                <p> Through every challenge and joy, my commitment to you remains <span class="bg-blue-700">unbreakable</span>🫂</p>
+            </div>
+        </div>
+        
+        <!-- Bad News -->
+        <div class="bg-gray-800 rounded-lg p-4">
+            <div class="flex justify-between">
+                <p class="text-lg">Bad News</p>
+                <div class="bg-gray-700 rounded-full p-0 w-6 h-6 flex items-center justify-center cursor-pointer" onclick="toggleNewsContent('bad-news-content', 'bad-news-icon')">
+                    <i class="fas fa-chevron-down text-white" id="bad-news-icon"></i>
+                </div>
+            </div>
+            <div id="bad-news-content" class="mt-2" style="display: none;">
+                <p>Naa iruka varaikum bad news unkitta vara vidamaaten</p>
+                <p><span class="bg-blue-700">No bad news</span>🥰💗</p>
+            </div>
+        </div>
+    </div>
+     <!-- Shopping Container -->
+     <div id="shopping-text" style="display: none;">
+        <p class="text-lg">Poogalaamaa😅💗</p>
+        <img src="shopping.gif" style="border-radius: 13px;">
+    </div>
+
+    <!-- Surprise Container -->
+    <div id="surprise-text" style="display: none;">
+        <p class="text-lg">Naanthaan😅💗</p>
+        <img src="surprise.gif" style="border-radius: 13px;">
+    </div>
+    <!-- Search Result -->
+    <div id="search-results" class="mb-4">
+         <!-- Did you mean section -->
+   <div class="mt-6 w-full max-w-2xl">
+    <p class="text-gray-400">
+     Did you mean:
+     <span class="text-blue-400">
+      <i>Kaal la vilanum</i>
+     </span>
+    </p>
+   </div>
+ <!-- Image Section -->
+ <div class="mt-4 w-full max-w-2xl">
+    <img alt="A placeholder image with a gradient from dark purple to magenta" class="w-full" height="400" src="sorry.gif" width="600" style="border-radius: 7px"/>
+   </div>
+   <!-- Word Coach Section -->
+   <div class="mt-6 w-full max-w-2xl bg-gray-800 p-4 rounded-lg">
+    <div class="flex justify-between items-center">
+     <p class="text-gray-400" id="word-coach">
+      
+     </p>
+     <p class="text-gray-400" id="score">
+        Score • <span class="text-green-500">1</span></p>
+    </div>
+    <p class="mt-2" id="question">
+     Which word is
+     <span class="italic">
+      similar
+     </span>
+     to sorry?
+    </p>
+    <div class="mt-4" id="options-container">
+     <button class="w-full bg-gray-700 py-2 rounded-lg mb-1 text-white" id="option1" onclick="handleClick(this, true)">
+      Mannichiru chellam
+     </button>
+     <div class="text-center text-gray-400 my-1">
+      or
+     </div>
+     <button class="w-full bg-gray-700 text-white py-2 rounded-lg" id="option2" onclick="handleClick(this, true)">
+      Chellakutty manichiruda
+     </button>
+    </div>
+    <div class="flex justify-center mt-4 space-x-2">
+     <i class="fas fa-heart text-gray-500 heart"></i>
+     <i class="fas fa-heart text-gray-500 heart"></i>
+     <i class="fas fa-heart text-gray-500 heart"></i>
+     <i class="fas fa-heart text-gray-500 heart"></i>
+    </div>
+   </div>
+
+    </div>
+
+    <!-- Images -->
+    <div id="image-container" class="w-full flex flex-wrap justify-center bg-gray-900 p-0" style="display: none;">
+        <div class="w-1/2 p-2">
+            <div class="bg-gray-800 rounded-lg p-2">
+                <img alt="Image 1" class="rounded-lg" height="150" src="p10.jpeg" width="150"/>
+                <div class="text-gray-400 text-sm mt-0">Sorry</div>
+            </div>
+        </div>
+        <div class="w-1/2 p-2">
+            <div class="bg-gray-800 rounded-lg p-2">
+                <img alt="Image 2" class="rounded-lg" height="150" src="p11.jpeg" width="150"/>
+                <div class="text-gray-400 text-sm mt-2">Sorry</div>
+            </div>
+        </div>
+        <div class="w-1/2 p-2">
+            <div class="bg-gray-800 rounded-lg p-2">
+                <img alt="Image 1" class="rounded-lg" height="150" src="p12.jpeg" width="150"/>
+                <div class="text-gray-400 text-sm mt-2">Sorry</div>
+            </div>
+        </div>
+        <div class="w-1/2 p-2">
+            <div class="bg-gray-800 rounded-lg p-2">
+                <img alt="Image 2" class="rounded-lg" height="150" src="p13.jpg" width="150"/>
+                <div class="text-gray-400 text-sm mt-2">Sorry</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Container -->
+    <div id="video-container" style="display: none;">
+        <div class="bg-gray-800 rounded-lg p-0">
+            <video controls class="w-full rounded-lg">
+                <source src="video5.mp4" type="video/mp4">
+            </video>
+            <div class="text-gray-400 text-sm mt-1">Sorry di</div>
+        </div><br>
+        <div class="bg-gray-800 rounded-lg p-0">
+            <video controls class="w-full rounded-lg">
+                <source src="video6.mp4" type="video/mp4">
+            </video>
+            <div class="text-gray-400 text-sm mt-1">Un puruchan pavam di</div>
+        </div>
+    </div>
+
+    <!-- People Also Ask -->
+    <div id="people-ask-container" style="display: block;">
+ 
+    </div>
+
+    <!-- Footer Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-gray-800 p-2 flex justify-around items-center">
+        <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('home')">
+            <i class="fas fa-home text-gray-400" id="home-icon"></i>
+            <span class="text-xs text-gray-400" id="home-text">Home</span>
+        </div>
+        <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('search')">
+            <i class="fas fa-search text-blue-400" id="search-icon"></i>
+            <span class="text-xs text-blue-400" id="search-text">Search</span>
+        </div>
+        <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('saved')">
+            <i class="fas fa-bookmark text-gray-400" id="saved-icon"></i>
+            <span class="text-xs text-gray-400" id="saved-text">Saved</span>
+        </div>
+    </div>
+</div>
+<script>
+    function handleClick(button, isCorrect) {
+      const buttons = document.querySelectorAll('button');
+      const hearts = document.querySelectorAll('.heart');
+      const scoreElement = document.getElementById('score');
+      let currentScore = parseInt(scoreElement.innerText.split('•')[1].trim());
+ 
+      // Reset all buttons and hearts
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-green-500', 'bg-red-500');
+        btn.classList.add('bg-gray-700');
+        btn.innerHTML = btn.innerText.trim();
+      });
+ 
+      // Set the clicked button and corresponding heart
+      if (isCorrect) {
+        button.classList.add('bg-green-500');
+        button.innerHTML = '<i class="fas fa-check mr-2"></i>' + button.innerText.trim();
+        hearts[0].classList.add('text-green-500');
+        currentScore += 4; // Add 4 to the current score to make it 5
+      } else {
+        button.classList.add('bg-red-500');
+        button.innerHTML = '<i class="fas fa-times mr-2"></i>' + button.innerText.trim();
+        hearts[0].classList.add('text-red-500');
+        currentScore -= 5; // Subtract 5 from the current score
+      }
+ 
+      scoreElement.innerHTML = 'Score • <span class="text-green-500">' + currentScore + '</span>';
+ 
+      // Load next question if the first question is answered
+      if (button.id === 'option1' || button.id === 'option2') {
+        setTimeout(loadNextQuestion, 1000);
+      }
+    }
+ 
+    function loadNextQuestion() {
+    const questionElement = document.getElementById('question');
+    const option1 = document.getElementById('option1');
+    const option2 = document.getElementById('option2');
+    const hearts = document.querySelectorAll('.heart');
+
+    questionElement.innerHTML = 'How do you <span class="italic">want</span> me to apologize?';
+    option1.innerText = '1000 time sorry';
+    option2.innerText = 'Mallipoo';
+
+    option1.classList.remove('bg-green-500', 'bg-red-500');
+    option1.classList.add('bg-gray-700');
+    option2.classList.remove('bg-green-500', 'bg-red-500');
+    option2.classList.add('bg-gray-700');
+
+    option1.onclick = function() { handleNextClick(this, false); };
+    option2.onclick = function() { handleNextClick(this, true); };
+
+
+      // Keep the first heart's color as it was
+      if (hearts[0].classList.contains('text-green-500')) {
+        hearts[0].classList.add('text-green-500');
+      } else if (hearts[0].classList.contains('text-red-500')) {
+        hearts[0].classList.add('text-red-500');
+      }
+    }
+ 
+    function handleNextClick(button, isCorrect) {
+      const hearts = document.querySelectorAll('.heart');
+      const scoreElement = document.getElementById('score');
+      let currentScore = parseInt(scoreElement.innerText.split('•')[1].trim());
+ 
+      // Reset the buttons
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-green-500', 'bg-red-500');
+        btn.classList.add('bg-gray-700');
+        btn.innerHTML = btn.innerText.trim();
+      });
+ 
+      // Set the clicked button and corresponding heart
+      if (isCorrect) {
+        button.classList.add('bg-green-500');
+        button.innerHTML = '<i class="fas fa-check mr-2"></i>' + button.innerText.trim();
+        hearts[1].classList.add('text-green-500');
+        currentScore += 5; // Add 5 to the current score
+      } else {
+        button.classList.add('bg-red-500');
+        button.innerHTML = '<i class="fas fa-times mr-2"></i>' + button.innerText.trim();
+        hearts[1].classList.add('text-red-500');
+        currentScore -= 5; // Subtract 5 from the current score
+      }
+ 
+      scoreElement.innerHTML = 'Score • <span class="text-green-500">' + currentScore + '</span>';
+ 
+      // Load third question
+      setTimeout(loadThirdQuestion, 1000);
+    }
+ 
+    function loadThirdQuestion() {
+      const questionElement = document.getElementById('question');
+      const option1 = document.getElementById('option1');
+      const option2 = document.getElementById('option2');
+      const hearts = document.querySelectorAll('.heart');
+ 
+      questionElement.innerHTML = 'Will you <span class="italic">forgive</span> me?';
+      option1.innerText = 'pandren';
+      option2.innerText = 'panna maaten';
+ 
+      option1.classList.remove('bg-green-500', 'bg-red-500');
+      option1.classList.add('bg-gray-700');
+      option2.classList.remove('bg-green-500', 'bg-red-500');
+      option2.classList.add('bg-gray-700');
+ 
+      option1.onclick = function() { handleThirdClick(this, true); };
+      option2.onclick = function() { handleThirdClick(this, false); };
+ 
+      // Keep the first and second heart's color as it was
+      if (hearts[0].classList.contains('text-green-500')) {
+        hearts[0].classList.add('text-green-500');
+      } else if (hearts[0].classList.contains('text-red-500')) {
+        hearts[0].classList.add('text-red-500');
+      }
+ 
+      if (hearts[1].classList.contains('text-green-500')) {
+        hearts[1].classList.add('text-green-500');
+      } else if (hearts[1].classList.contains('text-red-500')) {
+        hearts[1].classList.add('text-red-500');
+      }
+    }
+ 
+    function handleThirdClick(button, isCorrect) {
+      const hearts = document.querySelectorAll('.heart');
+      const scoreElement = document.getElementById('score');
+      let currentScore = parseInt(scoreElement.innerText.split('•')[1].trim());
+ 
+      // Reset the buttons
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-green-500', 'bg-red-500');
+        btn.classList.add('bg-gray-700');
+        btn.innerHTML = btn.innerText.trim();
+      });
+ 
+      // Set the clicked button and corresponding heart
+      if (isCorrect) {
+        button.classList.add('bg-green-500');
+        button.innerHTML = '<i class="fas fa-check mr-2"></i>' + button.innerText.trim();
+        hearts[2].classList.add('text-green-500');
+        currentScore += 5; // Add 5 to the current score
+      } else {
+        button.classList.add('bg-red-500');
+        button.innerHTML = '<i class="fas fa-times mr-2"></i>' + button.innerText.trim();
+        hearts[2].classList.add('text-red-500');
+        currentScore -= 5; // Subtract 5 from the current score
+      }
+ 
+      scoreElement.innerHTML = 'Score • <span class="text-green-500">' + currentScore + '</span>';
+ 
+      // Load fourth question
+      setTimeout(loadFourthQuestion, 1000);
+    }
+ 
+    function loadFourthQuestion() {
+      const questionElement = document.getElementById('question');
+      const option1 = document.getElementById('option1');
+      const option2 = document.getElementById('option2');
+      const hearts = document.querySelectorAll('.heart');
+ 
+      questionElement.innerHTML = 'If you <span class="italic">want</span> to beat me?';
+      option1.innerText = 'Ama da';
+      option2.innerText = 'Illa da';
+ 
+      option1.classList.remove('bg-green-500', 'bg-red-500');
+      option1.classList.add('bg-gray-700');
+      option2.classList.remove('bg-green-500', 'bg-red-500');
+      option2.classList.add('bg-gray-700');
+ 
+      option1.onclick = function() { handleFourthClick(this, true); };
+      option2.onclick = function() { handleFourthClick(this, false); };
+ 
+      // Keep the first, second, and third heart's color as it was
+      if (hearts[0].classList.contains('text-green-500')) {
+        hearts[0].classList.add('text-green-500');
+      } else if (hearts[0].classList.contains('text-red-500')) {
+        hearts[0].classList.add('text-red-500');
+      }
+ 
+      if (hearts[1].classList.contains('text-green-500')) {
+        hearts[1].classList.add('text-green-500');
+      } else if (hearts[1].classList.contains('text-red-500')) {
+        hearts[1].classList.add('text-red-500');
+      }
+ 
+      if (hearts[2].classList.contains('text-green-500')) {
+        hearts[2].classList.add('text-green-500');
+      } else if (hearts[2].classList.contains('text-red-500')) {
+        hearts[2].classList.add('text-red-500');
+      }
+    }
+ 
+    function handleFourthClick(button, isCorrect) {
+      const hearts = document.querySelectorAll('.heart');
+      const scoreElement = document.getElementById('score');
+      let currentScore = parseInt(scoreElement.innerText.split('•')[1].trim());
+ 
+      // Reset the buttons
+      const buttons = document.querySelectorAll('button');
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-green-500', 'bg-red-500');
+        btn.classList.add('bg-gray-700');
+        btn.innerHTML = btn.innerText.trim();
+      });
+ 
+      // Set the clicked button and corresponding heart
+      if (isCorrect) {
+        button.classList.add('bg-green-500');
+        button.innerHTML = '<i class="fas fa-check mr-2"></i>' + button.innerText.trim();
+        hearts[3].classList.add('text-green-500');
+        currentScore += 5; // Add 5 to the current score
+      } else {
+        button.classList.add('bg-red-500');
+        button.innerHTML = '<i class="fas fa-times mr-2"></i>' + button.innerText.trim();
+        hearts[3].classList.add('text-red-500');
+        currentScore -= 5; // Subtract 5 from the current score
+      }
+ 
+      scoreElement.innerHTML = 'Score • <span class="text-green-500">' + currentScore + '</span>';
+ 
+      // Display final message
+      setTimeout(displayFinalMessage, 1000);
+    }
+ 
+    function displayFinalMessage() {
+      const questionElement = document.getElementById('question');
+      const optionsContainer = document.getElementById('options-container');
+      const scoreElement = document.getElementById('score');
+      const wordCoachElement = document.getElementById('word-coach');
+ 
+      questionElement.innerText = 'Sorry Chellam';
+      questionElement.classList.add('text-4xl', 'font-bold', 'text-center');
+      optionsContainer.innerHTML = ''; // Remove all options
+      scoreElement.innerText = ''; // Remove the score
+      wordCoachElement.innerText = ''; // Remove the WORD COACH text
+    }
+   </script>
+
+</body>
+</html>

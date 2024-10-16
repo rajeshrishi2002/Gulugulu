@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gulugulu</title>
+    <link rel="icon" href="icon.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <script>
+        function toggleContent() {
+            var content = document.getElementById("extra-content");
+            var icon = document.getElementById("toggle-icon");
+            content.style.display = content.style.display === "none" ? "block" : "none";
+            icon.classList.toggle("fa-chevron-down");
+            icon.classList.toggle("fa-chevron-up");
+        }
+
+        function toggleSecondContent() {
+            var content = document.getElementById("second-extra-content");
+            var icon = document.getElementById("toggle-icon-2");
+            content.style.display = content.style.display === "none" ? "block" : "none";
+            icon.classList.toggle("fa-chevron-down");
+            icon.classList.toggle("fa-chevron-up");
+        }
+
+        function toggleNewsContent(newsId, iconId) {
+            var content = document.getElementById(newsId);
+            var icon = document.getElementById(iconId);
+            content.style.display = content.style.display === "none" ? "block" : "none";
+            icon.classList.toggle("fa-chevron-down");
+            icon.classList.toggle("fa-chevron-up");
+        }
+        function setActiveTab(tab) {
+    var tabs = document.querySelectorAll('.tab');
+    tabs.forEach(function (tabElement) {
+        tabElement.classList.remove('border-white', 'text-white');
+        tabElement.classList.add('border-transparent', 'text-gray-400');
+    });
+    tab.classList.remove('border-transparent', 'text-gray-400');
+    tab.classList.add('border-white', 'text-white');
+
+    var searchResults = document.getElementById("search-results");
+    var imageContainer = document.getElementById("image-container");
+    var videoContainer = document.getElementById("video-container");
+    var peopleAskContainer = document.getElementById("people-ask-container");
+    var shoppingText = document.getElementById("shopping-text");
+    var surpriseText = document.getElementById("surprise-text");
+    var newsContainer = document.getElementById("news-container");
+
+    if (tab.textContent === "Images") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "flex";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "Videos") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "block";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "Shopping") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "block"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "Surprise") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "block"; 
+        newsContainer.style.display = "none"; 
+    } else if (tab.textContent === "News") {
+        searchResults.style.display = "none";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "none"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "block"; // Show news container
+    } else {
+        searchResults.style.display = "block";
+        imageContainer.style.display = "none";
+        videoContainer.style.display = "none";
+        peopleAskContainer.style.display = "block"; 
+        shoppingText.style.display = "none"; 
+        surpriseText.style.display = "none"; 
+        newsContainer.style.display = "none"; 
+    }
+}
+
+        function activateTab(tab) {
+            const tabs = ['home', 'search', 'saved'];
+            tabs.forEach((t) => {
+                const icon = document.getElementById(`${t}-icon`);
+                const text = document.getElementById(`${t}-text`);
+                icon.classList.remove('text-blue-500');
+                icon.classList.add('text-gray-400');
+                text.classList.remove('text-blue-500');
+                text.classList.add('text-gray-400');
+            });
+
+            const activeIcon = document.getElementById(`${tab}-icon`);
+            const activeText = document.getElementById(`${tab}-text`);
+            activeIcon.classList.add('text-blue-500');
+            activeText.classList.add('text-blue-500');
+
+            if (tab === 'home') {
+                window.location.href = 'index.html';
+            } else if (tab === 'search') {
+                window.location.href = 'search.html';
+            } else if (tab === 'saved') {
+                window.location.href = 'index.html?saved';
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-white font-roboto">
+<div class="max-w-md mx-auto p-4">
+    <!-- Google Search Header -->
+    <div class="flex items-center justify-center mb-1">
+        <img alt="" style="height: 70px; width: auto;" src="logo.png"/>
+    </div>
+    <!-- Search Bar -->
+    <div class="relative mb-4">
+        <div class="flex items-center">
+            <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
+            <input class="bg-gray-800 text-white rounded-full py-2 pl-10 pr-16 w-full max-w-3xl w-full overflow-x-auto whitespace-nowrap" type="text" value="Cute ways to say I love you" />
+            <img src="mic.png" class="absolute right-10 top-2.5" style="width: 25px;">
+            <img src="camera.png" class="absolute right-3 top-2.5" style="width: 25px;">
+        </div>
+    </div>
+    
+<style>
+input {
+    min-width: 0; /* Prevents input from exceeding its container */
+    max-width: calc(100% - 50px); /* Adjust this based on your icon sizes */
+    white-space: nowrap; /* Ensures text stays on one line */
+    outline: none;
+    box-shadow: none;
+}
+
+    @keyframes flicker {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+ 
+    .flicker {
+      animation: flicker 1s infinite;
+    }
+   </style>
+   <script>
+    let typingTimeout;
+ 
+    function toggleDropdown(id) {
+      var dropdown = document.getElementById(id);
+      dropdown.classList.toggle("hidden");
+    }
+ 
+    function selectLanguage(language, dropdownId, displayId) {
+      document.getElementById(displayId).innerText = language;
+      toggleDropdown(dropdownId);
+    }
+ 
+    function translateText() {
+      const translationDisplay = document.getElementById('translationDisplay');
+      translationDisplay.innerHTML = 'Translating<span class="flicker">...</span>';
+      
+      clearTimeout(typingTimeout);
+typingTimeout = setTimeout(() => {
+  const words = ['நான்', 'உன்னை', 'காதலிக்கிறேன்','💗'];
+  translationDisplay.innerHTML = ''; // Use innerHTML instead of innerText
+  words.forEach((word, index) => {
+    setTimeout(() => {
+      translationDisplay.innerHTML += word + '&nbsp;'; // Add a non-breaking space
+    }, index * 500);
+  });
+}, 1000);
+    }
+   </script>   
+    <!-- Tabs -->
+    <div class="flex space-x-4 mb-4">
+        <span class="tab border-b-2 border-white pb-1 cursor-pointer text-white" onclick="setActiveTab(this)">All</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Images</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Videos</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">News</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Shopping</span>
+        <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Surprise</span>
+    </div>
+    
+    <!-- News Container -->
+    <div id="news-container" style="display: none;">
+        <!-- Good News -->
+        <div class="bg-gray-800 rounded-lg p-4 mb-4">
+            <div class="flex justify-between">
+                <p class="text-lg">Good News</p>
+                <div class="bg-gray-700 rounded-full p-0 w-6 h-6 flex items-center justify-center cursor-pointer" onclick="toggleNewsContent('good-news-content', 'good-news-icon')">
+                    <i class="fas fa-chevron-down text-white" id="good-news-icon"></i>
+                </div>
+            </div>
+            <div id="good-news-content" class="mt-2" style="display: none;">
+                <p>I will always stand by your side, no matter the situation,</p>
+                <p> Through every challenge and joy, my commitment to you remains <span class="bg-blue-700">unbreakable</span>🫂</p>
+            </div>
+        </div>
+        
+        <!-- Bad News -->
+        <div class="bg-gray-800 rounded-lg p-4">
+            <div class="flex justify-between">
+                <p class="text-lg">Bad News</p>
+                <div class="bg-gray-700 rounded-full p-0 w-6 h-6 flex items-center justify-center cursor-pointer" onclick="toggleNewsContent('bad-news-content', 'bad-news-icon')">
+                    <i class="fas fa-chevron-down text-white" id="bad-news-icon"></i>
+                </div>
+            </div>
+            <div id="bad-news-content" class="mt-2" style="display: none;">
+                <p>Naa iruka varaikum bad news unkitta vara vidamaaten</p>
+                <p><span class="bg-blue-700">No bad news</span>🥰💗</p>
+            </div>
+        </div>
+    </div>
+     <!-- Shopping Container -->
+     <div id="shopping-text" style="display: none;">
+        <p class="text-lg">Poogalaamaa😅💗</p>
+        <img src="shopping.gif" style="border-radius: 13px;">
+    </div>
+
+    <!-- Surprise Container -->
+    <div id="surprise-text" style="display: none;">
+        <p class="text-lg">Naanthaan😅💗</p>
+        <img src="surprise.gif" style="border-radius: 13px;">
+    </div>
+    <!-- Search Result -->
+    <div id="search-results" class="mb-4">
+   <!-- Translation Section -->
+   <div class="mt-6 bg-gray-800 p-4 rounded-lg" style="height: auto;">
+    <div class="flex items-center justify-between">
+     <div class="relative flex-1">
+      <div class="flex items-center space-x-2 cursor-pointer" onclick="toggleDropdown('dropdownEnglish')">
+       <span class="text-blue-500" id="displayEnglish">
+        English
+       </span>
+       <i class="fas fa-caret-down text-blue-500">
+       </i>
+      </div>
+      <div class="absolute bg-gray-700 text-gray-300 mt-2 rounded-lg shadow-lg hidden" id="dropdownEnglish">
+       <div class="p-2 cursor-pointer hover:bg-gray-600" onclick="selectLanguage('English', 'dropdownEnglish', 'displayEnglish')">
+        English
+       </div>
+       <div class="p-2 cursor-pointer hover:bg-gray-600" onclick="selectLanguage('Spanish', 'dropdownEnglish', 'displayEnglish')">
+        Spanish
+       </div>
+       <div class="p-2 cursor-pointer hover:bg-gray-600" onclick="selectLanguage('French', 'dropdownEnglish', 'displayEnglish')">
+        French
+       </div>
+       <div class="p-2 cursor-pointer hover:bg-gray-600" onclick="selectLanguage('German', 'dropdownEnglish', 'displayEnglish')">
+        Korean
+       </div>
+       <div class="p-2 cursor-pointer hover:bg-gray-600" onclick="selectLanguage('Chinese', 'dropdownEnglish', 'displayEnglish')">
+        Chinese
+       </div>
+       <div class="p-2 cursor-pointer hover:bg-gray-600" onclick="selectLanguage('Japanese', 'dropdownEnglish', 'displayEnglish')">
+        Japanese
+       </div>
+      </div>
+     </div>
+     <i class="fas fa-exchange-alt mx-4">
+     </i>
+     <div class="relative flex-1 text-right">
+      <div class="flex items-center justify-end space-x-2 cursor-pointer" onclick="toggleDropdown('dropdownTamil')">
+       <span class="text-blue-500" id="displayTamil">
+        Tamil
+       </span>
+       <i class="fas fa-caret-down text-blue-500">
+       </i>
+      </div>
+      <div class="absolute right-0 bg-gray-700 text-gray-300 mt-2 rounded-lg shadow-lg hidden" id="dropdownTamil">
+      </div>
+     </div>
+    </div>
+    <div class="mt-5">
+        <input class="bg-gray-700 text-gray-300 w-full p-2 rounded max-w-5xl" id="inputText" placeholder="Enter text" type="text" oninput="translateText()" />
+    </div>
+    <div class="mt-5">
+     <div class="bg-gray-700 text-white w-full p-2 rounded" id="translationDisplay" style="height: 2.5rem;">
+      Translation
+     </div>
+    </div>
+   </div>
+    </div>
+
+    <!-- Images -->
+    <div id="image-container" class="w-full flex flex-wrap justify-center bg-gray-900 p-0" style="display: none;">
+        <img src="loveyou.gif" style="border-radius: 13px; margin-top: 120px;">
+
+    </div>
+
+    <!-- Video Container -->
+    <div id="video-container" style="display: none;">
+        <div class="bg-gray-800 rounded-lg p-0">
+            <video controls class="w-full rounded-lg">
+                <source src="video10.mp4" type="video/mp4">
+            </video>
+            <div class="text-gray-400 text-sm mt-1">unnala Ulagam Azhagachi</div>
+        </div><br>
+        <div class="bg-gray-800 rounded-lg p-0">
+            <video controls class="w-full rounded-lg">
+                <source src="video11.mp4" type="video/mp4">
+            </video>
+            <div class="text-gray-400 text-sm mt-1">Unakena Mattum Vazhum Idhayamadi</div>
+        </div>
+    </div>
+
+    <!-- People Also Ask -->
+    <div id="people-ask-container" style="display: block;">
+        <div class="pt-3">
+            <p class="text-lg" style="font-size: 22px;">People also ask</p><br>
+            <div class="mt-2 flex items-center justify-between">
+                <p class="text-white">How will you prove your love?</p>
+                <div class="bg-gray-700 rounded-full p-0 w-6 h-6 flex items-center justify-center cursor-pointer" onclick="toggleContent()">
+                    <i class="fas fa-chevron-down text-white" id="toggle-icon"></i>
+                </div>
+            </div>
+            <div class="mt-2" id="extra-content" style="display: none;">
+                <p>I’ll prove my love by <span class="bg-blue-700">always letting you win our debates,</span>  even if I’m  right. Your smile is worth more than my opinion,<br><br>
+                    I’ll prove my love by <span class="bg-blue-700">learning all your favorite songs and singing them poorly in the car,</span>just to make you laugh—bonus points if I dance like no one’s watching!<br>
+                    I’ll prove my love by  <span class="bg-blue-700"> being your personal photographer, capturing your best moments</span><br><br>
+            </div>
+            <hr class="border-gray-700 my-4">
+
+        </div>
+    </div>
+
+    <!-- Footer Navigation -->
+    <div class="fixed bottom-0 left-0 right-0 bg-gray-800 p-2 flex justify-around items-center">
+        <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('home')">
+            <i class="fas fa-home text-gray-400" id="home-icon"></i>
+            <span class="text-xs text-gray-400" id="home-text">Home</span>
+        </div>
+        <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('search')">
+            <i class="fas fa-search text-blue-400" id="search-icon"></i>
+            <span class="text-xs text-blue-400" id="search-text">Search</span>
+        </div>
+        <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('saved')">
+            <i class="fas fa-bookmark text-gray-400" id="saved-icon"></i>
+            <span class="text-xs text-gray-400" id="saved-text">Saved</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>

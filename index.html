@@ -1,0 +1,151 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"/>
+    <title>Gulugulu</title>
+    <link rel="icon" href="icon.png" />
+    <style>
+        .active {
+            color: #3b82f6 !important;
+        }
+        .inactive {
+            color: #9ca3af !important;
+        }
+        body {
+            overflow-y: scroll;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        body::-webkit-scrollbar {
+            display: none;  /* Chrome, Safari, and Opera */
+        }
+        #error-image {
+            display: none; /* Initially hidden */
+            position: absolute; /* Positioning it below the search bar */
+            top: 100%; /* Align it below the search bar */
+            left: 50%; /* Center it horizontally */
+            transform: translateX(-50%); /* Centering adjustment */
+            margin-top: 8px; /* Space between the search bar and the image */
+            border-radius: 13px;
+        }
+        #offline-game {
+            display: none; /* Initially hidden */
+            background-color: #333; /* Background for the game area */
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-roboto flex flex-col justify-center items-center min-h-screen">
+    <div class="max-w-md w-full p-6 relative" style="margin-bottom: 110px;">
+
+        <!-- Google Image -->
+        <div class="flex justify-center mb-0">
+            <img alt="Google logo" class="mt-1" src="logo.png" width="204"/>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative mb-4">
+            <input id="search-input" class="w-full bg-gray-800 text-gray-300 rounded-full py-4 px-4 pl-10" placeholder="Search" type="text"/>
+            <div class="absolute inset-y-0 left-0 flex items-center pl-4">
+                <i class="fas fa-search text-gray-400"></i>
+            </div>
+            <div class="absolute inset-y-0 right-0 flex items-center pr-4 space-x-4">
+                <img src="mic.png" style="width: 30px; margin-right: -10px;">
+                <img src="camera.png" style="width: 30px;">
+            </div>
+        </div>
+
+        <!-- Error Image -->
+        <img id="error-image" src="logo.png" alt="Error" class="mt-2 w-1/2" />
+
+        <!-- Offline Game -->
+        <div id="offline-game">
+            <h2 class="text-xl mb-2">You're Offline!</h2>
+            <p>Play a simple game here...</p>
+            <!-- Add your game logic here -->
+            <button onclick="startGame()">Start Game</button>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="fixed bottom-0 left-0 right-0 bg-gray-800 p-2 flex justify-around items-center">
+            <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('home')">
+                <i class="fas fa-home text-blue-500" id="home-icon"></i>
+                <span class="text-xs text-blue-500" id="home-text">Home</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer" onclick="checkSearch()">
+                <i class="fas fa-search text-gray-400" id="search-icon"></i>
+                <span class="text-xs text-gray-400" id="search-text">Search</span>
+            </div>
+            <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('saved')">
+                <i class="fas fa-bookmark text-gray-400" id="saved-icon"></i>
+                <span class="text-xs text-gray-400" id="saved-text">Saved</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function activateTab(tab) {
+            resetTabs();
+            document.getElementById(tab + '-icon').classList.add('active');
+            document.getElementById(tab + '-text').classList.add('active');
+            document.getElementById(tab + '-icon').classList.remove('inactive');
+            document.getElementById(tab + '-text').classList.remove('inactive');
+        }
+
+        function checkSearch() {
+            const searchInput = document.getElementById('search-input').value;
+            const errorImage = document.getElementById('error-image');
+            resetTabs();
+
+            if (searchInput.toLowerCase() === 'gulugulu') {
+                window.location.href = 'search.html';
+            } else {
+                errorImage.style.display = 'block'; // Show the image
+                errorImage.src = 'vadivelu.gif'; // Set your error image here
+                document.getElementById('search-icon').classList.add('active');
+                document.getElementById('search-text').classList.add('active');
+                document.getElementById('search-icon').classList.remove('inactive');
+                document.getElementById('search-text').classList.remove('inactive');
+            }
+        }
+
+        function resetTabs() {
+            // Reset all icons and texts to gray
+            document.getElementById('home-icon').classList.remove('active');
+            document.getElementById('home-text').classList.remove('active');
+            document.getElementById('home-icon').classList.add('inactive');
+            document.getElementById('home-text').classList.add('inactive');
+            document.getElementById('search-icon').classList.remove('active');
+            document.getElementById('search-text').classList.remove('active');
+            document.getElementById('search-icon').classList.add('inactive');
+            document.getElementById('search-text').classList.add('inactive');
+            document.getElementById('saved-icon').classList.remove('active');
+            document.getElementById('saved-text').classList.remove('active');
+            document.getElementById('saved-icon').classList.add('inactive');
+            document.getElementById('saved-text').classList.add('inactive');
+        }
+
+        function checkOnlineStatus() {
+            const offlineGame = document.getElementById('offline-game');
+            if (!navigator.onLine) {
+                offlineGame.style.display = 'block'; // Show the offline game
+            } else {
+                offlineGame.style.display = 'none'; // Hide the offline game
+            }
+        }
+
+        function startGame() {
+            alert("Game Started!"); // Replace with your game logic
+        }
+
+        window.addEventListener('load', checkOnlineStatus);
+        window.addEventListener('online', checkOnlineStatus);
+        window.addEventListener('offline', checkOnlineStatus);
+    </script>
+</body>
+</html>

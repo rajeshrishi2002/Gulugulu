@@ -1,0 +1,161 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Search History</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        @keyframes rainbow {
+            0% { color: red; }
+            16% { color: orange; }
+            32% { color: yellow; }
+            48% { color: green; }
+            64% { color: blue; }
+            80% { color: indigo; }
+            100% { color: violet; }
+        }
+        .rainbow-text {
+            animation: rainbow 2s infinite;
+        }
+        .rotate-arrow {
+           display: inline-block; /* Ensure transform applies correctly */
+           transform: rotate(220deg);
+           transition: transform 0.3s; /* Optional: for a smooth transition */
+        }
+
+    </style>
+    <script>
+        function filterSearch() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const items = document.querySelectorAll('.search-item');
+            const specialItems = document.querySelectorAll('.special-item');
+            
+            if (input === 'aishwaryarajesh') {
+                items.forEach(item => item.style.display = 'none');
+                specialItems.forEach(item => item.style.display = 'flex');
+            } else {
+                items.forEach(item => {
+                    const text = item.querySelector('span').textContent.toLowerCase();
+                    if (text.includes(input)) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+                specialItems.forEach(item => item.style.display = 'none');
+            }
+        }
+
+        function fillSearchField(text) {
+            document.getElementById('searchInput').value = text;
+            filterSearch();
+        }
+
+        function redirectToPage(page) {
+    window.location.href = page; // Redirect to the specified page
+}
+    </script>
+</head>
+<body class="bg-gray-900 text-white font-roboto">
+    <div class="max-w-md mx-auto p-4">
+        <div class="flex items-center bg-gray-800 rounded-full px-4 py-3 mb-4">
+            <a href="index.html">
+            <i class="fas fa-arrow-left text-gray-400"></i></a>
+            <input id="searchInput" type="text" placeholder="Search..." class="bg-transparent flex-grow text-white ml-4 outline-none" onkeyup="filterSearch()">
+            <img src="mic.png" style="width: 30px; margin-right: 7px;">
+            <img src="camera.png" style="width: 30px;">
+        </div>
+        <div class="space-y-4">
+            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('Cute ways to surprise my pondati'); redirectToPage('searchR1.html');">
+                <i class="fas fa-history text-gray-400"></i>
+                <span class="ml-4 flex-grow">Cute ways to surprise my pondati</span>
+                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
+            </div>
+            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to make my wife smile on a tough day'); redirectToPage('searchR2.html');">
+                <i class="fas fa-history text-gray-400"></i>
+                <span class="ml-4 flex-grow">How to make my wife smile on a tough day</span>
+                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
+            </div>
+            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('Best love songs to dedicate to my wife'); redirectToPage('searchall.html');">
+                <i class="fas fa-history text-gray-400"></i>
+                <span class="ml-4 flex-grow">Best love songs to dedicate to my wife</span>
+                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
+            </div>
+            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to express love without saying I love you'); redirectToPage('searchall.html');">
+                <i class="fas fa-history text-gray-400"></i>
+                <span class="ml-4 flex-grow">How to express love without saying I love you</span>
+                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
+            </div>
+            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to support my wife through tough times'); redirectToPage('searchall.html');">
+                <i class="fas fa-history text-gray-400"></i>
+                <span class="ml-4 flex-grow">How to support my wife through tough times</span>
+                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
+            </div>
+            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to apologize to my wife after a small fight'); redirectToPage('searchR6.html');">
+                <i class="fas fa-history text-gray-400"></i>
+                <span class="ml-4 flex-grow">How to apologize to my wife after a small fight</span>
+                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
+            </div>
+            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to make a homemade gift for her'); redirectToPage('searchall.html');">
+                <i class="fas fa-history text-gray-400"></i>
+                <span class="ml-4 flex-grow">How to make a homemade gift for her</span>
+                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
+            </div>
+            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('Romantic dinner recipes to cook together'); redirectToPage('searchall.html');">
+                <i class="fas fa-history text-gray-400"></i>
+                <span class="ml-4 flex-grow">Romantic dinner recipes to cook together</span>
+                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
+            </div>
+            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to make her feel special every day'); redirectToPage('searchall.html');">
+                <i class="fas fa-history text-gray-400"></i>
+                <span class="ml-4 flex-grow">How to make her feel special every day</span>
+                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
+            </div>
+            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('Cute ways to say I love you'); redirectToPage('searchR10.html');">
+                <i class="fas fa-history text-gray-400"></i>
+                <span class="ml-4 flex-grow">Cute ways to say I love you</span>
+                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
+            </div>
+            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('Ways to support my partner’s hobbies'); redirectToPage('searchall.html');">
+                <i class="fas fa-history text-gray-400"></i>
+                <span class="ml-4 flex-grow">Ways to support my partner’s hobbies</span>
+                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
+            </div>
+            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to calculate our love'); redirectToPage('searchR11.html');">
+                <i class="fas fa-history text-gray-400"></i>
+                <span class="ml-4 flex-grow">How to calculate our love</span>
+                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
+            </div>
+            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to support my wife dreams'); redirectToPage('searchR13.html');">
+                <i class="fas fa-history text-gray-400"></i>
+                <span class="ml-4 flex-grow">How to support my wife dreams</span>
+                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
+            </div>
+            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('Who is the best couple'); redirectToPage('searchall.html');">
+                <i class="fas fa-history text-gray-400"></i>
+                <span class="ml-4 flex-grow">Who is the best couple</span>
+                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
+            </div>
+            <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;">
+                <span class="ml-4 flex-grow">Aishwaryarajesh Line 1</span>
+            </div>
+            <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
+                <span class="ml-4 flex-grow">Aishwaryarajesh Line 2</span>
+            </div>
+            <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
+                <span class="ml-4 flex-grow">Aishwaryarajesh Line 3</span>
+            </div>
+            <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
+                <span class="ml-4 flex-grow">Aishwaryarajesh Line 4</span>
+            </div>
+            <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
+                <span class="ml-4 flex-grow">Aishwaryarajesh Line 5</span>
+            </div>
+            <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
+                <span class="ml-4 flex-grow">Aishwaryarajesh Line 6</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
