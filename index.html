@@ -31,47 +31,41 @@
             margin-top: 8px; /* Space between the search bar and the image */
             border-radius: 13px;
         }
-        #offline-game {
-            display: none; /* Initially hidden */
-            background-color: #333; /* Background for the game area */
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
+        .typing-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: #3b82f6;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
         }
     </style>
 </head>
 <body class="bg-gray-900 text-white font-roboto flex flex-col justify-center items-center min-h-screen">
     <div class="max-w-md w-full p-6 relative" style="margin-bottom: 110px;">
 
-        <!-- Google Image -->
         <div class="flex justify-center mb-0">
-            <img alt="Google logo" class="mt-1" src="logo.png" width="204"/>
+            <img alt="Google logo" class="mt-1 cursor-pointer" src="logo.png" width="204" onclick="location.reload()"/>
         </div>
 
-        <!-- Search Bar -->
         <div class="relative mb-4">
-            <input id="search-input" class="w-full bg-gray-800 text-gray-300 rounded-full py-4 px-4 pl-10" placeholder="Search" type="text"/>
+            <input id="search-input" class="w-full bg-gray-800 text-gray-300 rounded-full py-4 px-4 pl-10 focus:outline-none focus:ring-0" placeholder="Search" type="text"/>
             <div class="absolute inset-y-0 left-0 flex items-center pl-4">
                 <i class="fas fa-search text-gray-400"></i>
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-4 space-x-4">
-                <img src="mic.png" style="width: 30px; margin-right: -10px;">
-                <img src="camera.png" style="width: 30px;">
+                <img src="mic.png" style="width: 30px; margin-right: -10px; cursor: pointer;" id="mic-icon" onclick="handleMicClick()">
+                <img src="camera.png" style="width: 30px; cursor: pointer;" onclick="handleCameraClick()">
             </div>
         </div>
-
-        <!-- Error Image -->
         <img id="error-image" src="logo.png" alt="Error" class="mt-2 w-1/2" />
 
-        <!-- Offline Game -->
-        <div id="offline-game">
-            <h2 class="text-xl mb-2">You're Offline!</h2>
-            <p>Play a simple game here...</p>
-            <!-- Add your game logic here -->
-            <button onclick="startGame()">Start Game</button>
-        </div>
 
-        <!-- Bottom Navigation -->
         <div class="fixed bottom-0 left-0 right-0 bg-gray-800 p-2 flex justify-around items-center">
             <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('home')">
                 <i class="fas fa-home text-blue-500" id="home-icon"></i>
@@ -87,14 +81,22 @@
             </div>
         </div>
     </div>
-
+    <audio id="pesu-audio" src="pesu.mp3"></audio>
     <script>
-        function activateTab(tab) {
+         function activateTab(tab) {
             resetTabs();
             document.getElementById(tab + '-icon').classList.add('active');
             document.getElementById(tab + '-text').classList.add('active');
             document.getElementById(tab + '-icon').classList.remove('inactive');
             document.getElementById(tab + '-text').classList.remove('inactive');
+            
+            document.getElementById('error-image').style.display = 'none';
+            
+            if (tab === 'home') {
+                document.getElementById('home-text').textContent = 'you are my home';
+            } else if (tab === 'saved') {
+                document.getElementById('saved-text').textContent = 'saved in my heart';
+            }
         }
 
         function checkSearch() {
@@ -105,8 +107,8 @@
             if (searchInput.toLowerCase() === 'gulugulu') {
                 window.location.href = 'search.html';
             } else {
-                errorImage.style.display = 'block'; // Show the image
-                errorImage.src = 'vadivelu.gif'; // Set your error image here
+                errorImage.style.display = 'block'; 
+                errorImage.src = 'vadivelu.gif'; 
                 document.getElementById('search-icon').classList.add('active');
                 document.getElementById('search-text').classList.add('active');
                 document.getElementById('search-icon').classList.remove('inactive');
@@ -115,7 +117,6 @@
         }
 
         function resetTabs() {
-            // Reset all icons and texts to gray
             document.getElementById('home-icon').classList.remove('active');
             document.getElementById('home-text').classList.remove('active');
             document.getElementById('home-icon').classList.add('inactive');
@@ -128,24 +129,79 @@
             document.getElementById('saved-text').classList.remove('active');
             document.getElementById('saved-icon').classList.add('inactive');
             document.getElementById('saved-text').classList.add('inactive');
+            
+            document.getElementById('home-text').textContent = 'Home';
+            document.getElementById('saved-text').textContent = 'Saved';
         }
 
-        function checkOnlineStatus() {
-            const offlineGame = document.getElementById('offline-game');
-            if (!navigator.onLine) {
-                offlineGame.style.display = 'block'; // Show the offline game
-            } else {
-                offlineGame.style.display = 'none'; // Hide the offline game
-            }
+        function handleMicClick() {
+            const searchInput = document.getElementById('search-input');
+            const audio = document.getElementById('pesu-audio');
+            
+            searchInput.placeholder = "";
+            
+            const message = "Nee pesu naa kekuren🥰";
+            let i = 0;
+            const typingInterval = setInterval(() => {
+                if (i < message.length) {
+                    searchInput.placeholder = message.substring(0, i + 1) + '';
+                    i++;
+                } else {
+                    clearInterval(typingInterval);
+                    searchInput.placeholder = message; // Remove cursor when done
+                }
+            }, 100); // Adjust typing speed here
+            
+            // Play audio
+            audio.play();
+            
+            // Reset placeholder when audio ends
+            audio.onended = function() {
+                // First clear the message with backspace animation
+                let j = message.length;
+                const backspaceInterval = setInterval(() => {
+                    if (j > 0) {
+                        searchInput.placeholder = message.substring(0, j - 1) + '';
+                        j--;
+                    } else {
+                        clearInterval(backspaceInterval);
+                        searchInput.placeholder = "Search"; // Return to normal
+                    }
+                }, 50); // Adjust backspace speed here
+            };
         }
 
-        function startGame() {
-            alert("Game Started!"); // Replace with your game logic
+        function handleCameraClick() {
+            const searchInput = document.getElementById('search-input');
+            
+            searchInput.placeholder = "";
+            
+            const message = "Unna maari yaarum illa🥰";
+            let i = 0;
+            const typingInterval = setInterval(() => {
+                if (i < message.length) {
+                    searchInput.placeholder = message.substring(0, i + 1) + '';
+                    i++;
+                } else {
+                    clearInterval(typingInterval);
+                    searchInput.placeholder = message; 
+                }
+            }, 100); 
+            
+            setTimeout(() => {
+            
+                let j = message.length;
+                const backspaceInterval = setInterval(() => {
+                    if (j > 0) {
+                        searchInput.placeholder = message.substring(0, j - 1) + '';
+                        j--;
+                    } else {
+                        clearInterval(backspaceInterval);
+                        searchInput.placeholder = "Search"; 
+                    }
+                }, 50); 
+            }, 5000);
         }
-
-        window.addEventListener('load', checkOnlineStatus);
-        window.addEventListener('online', checkOnlineStatus);
-        window.addEventListener('offline', checkOnlineStatus);
     </script>
 </body>
 </html>
