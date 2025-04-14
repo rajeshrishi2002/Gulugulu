@@ -172,15 +172,14 @@ input {
         animation: rainbow 2s linear infinite, pulse 1s infinite;
     }
     @keyframes rainbow {
-        0% { color: red; }
-        14% { color: orange; }
-        28% { color: yellow; }
-        42% { color: green; }
-        56% { color: rgb(0, 242, 255); }
-        70% { color: rgb(186, 91, 255); }
-        84% { color: violet; }
-        100% { color: red; }
-    }
+        0% { color: rgb(0, 128, 255); }
+            16% { color: rgb(0, 255, 102); }
+            32% { color: rgb(0, 170, 255); }
+            48% { color: green; }
+            64% { color: rgb(0, 119, 255); }
+            80% { color: rgb(20, 130, 0); }
+            100% { color: rgb(0, 134, 223); }
+        }
     @keyframes pulse {
         0%, 100% { opacity: 1; }
         50% { opacity: 0.5; }
@@ -425,6 +424,9 @@ typingTimeout = setTimeout(() => {
         display.innerText = 'YOU + ME\n= 3 MAMA';
     } else if (input === 'ME+MISTAKE') {
         display.innerText = "ME + MISTAKE\n= I'LL SAY SORRY";
+     } else if (input === 'ME+YOU') {
+        display.innerText = "ME + YOU\n= HAPPINESS";
+        
     } else if (input === 'YOU+SMILE') {
         display.innerText = "YOU + SMILE\n=I'M HAPPY";
     } else if (input === 'YOU-SMILE') {
