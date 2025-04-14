@@ -88,7 +88,7 @@
         peopleAskContainer.style.display = "none"; 
         shoppingText.style.display = "none"; 
         surpriseText.style.display = "none"; 
-        newsContainer.style.display = "block"; // Show news container
+        newsContainer.style.display = "block"; 
     } else {
         searchResults.style.display = "block";
         imageContainer.style.display = "none";
@@ -128,11 +128,9 @@
 </head>
 <body class="bg-gray-900 text-white font-roboto">
 <div class="max-w-md mx-auto p-4">
-    <!-- Google Search Header -->
     <div class="flex items-center justify-center mb-1">
         <img alt="" style="height: 70px; width: auto;" src="logo.png"/>
     </div>
-    <!-- Search Bar -->
     <div class="relative mb-4">
         <div class="flex items-center">
             <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
@@ -144,14 +142,13 @@
     
 <style>
 input {
-    min-width: 0; /* Prevents input from exceeding its container */
-    max-width: calc(100% - 50px); /* Adjust this based on your icon sizes */
-    white-space: nowrap; /* Ensures text stays on one line */
+    min-width: 0; 
+    max-width: calc(100% - 50px); 
+    white-space: nowrap; 
 }
 
 
 </style> 
-    <!-- Tabs -->
     <div class="flex space-x-4 mb-4">
         <span class="tab border-b-2 border-white pb-1 cursor-pointer text-white" onclick="setActiveTab(this)">All</span>
         <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Images</span>
@@ -161,9 +158,7 @@ input {
         <span class="tab border-b-2 border-transparent pb-1 cursor-pointer text-gray-400" onclick="setActiveTab(this)">Surprise</span>
     </div>
     
-    <!-- News Container -->
     <div id="news-container" style="display: none;">
-        <!-- Good News -->
         <div class="bg-gray-800 rounded-lg p-4 mb-4">
             <div class="flex justify-between">
                 <p class="text-lg">Good News</p>
@@ -176,9 +171,7 @@ input {
                 <p> Through every challenge and joy, my commitment to you remains <span class="bg-blue-700">unbreakable</span>🫂</p>
             </div>
         </div>
-        
-        <!-- Bad News -->
-        <div class="bg-gray-800 rounded-lg p-4">
+                <div class="bg-gray-800 rounded-lg p-4">
             <div class="flex justify-between">
                 <p class="text-lg">Bad News</p>
                 <div class="bg-gray-700 rounded-full p-0 w-6 h-6 flex items-center justify-center cursor-pointer" onclick="toggleNewsContent('bad-news-content', 'bad-news-icon')">
@@ -191,18 +184,14 @@ input {
             </div>
         </div>
     </div>
-     <!-- Shopping Container -->
      <div id="shopping-text" style="display: none;">
         <p class="text-lg">Poogalaamaa😅💗</p><br>
         <img src="shopping.gif" style="border-radius: 13px;">
     </div>
-
-    <!-- Surprise Container -->
     <div id="surprise-text" style="display: none;">
         <p class="text-lg">Naanthaan😅💗</p><br>
         <img src="surprise.gif" style="border-radius: 13px;">
     </div>
-    <!-- Search Result -->
     <div id="search-results" class="mb-4">
         <p class="text-gray-400">
             Did you mean:
@@ -211,10 +200,9 @@ input {
             </span>
         </p><br>
         <p class="text-lg">
-            I support my wife by being her biggest fan🥰,<br> celebrating every little achievement like when she finishes her meal or remembers where she left her keys after a mini treasure hunt😁<br>I love seeing her smile light up the room💗,and 
+            I support my wife by  celebrating every little achievement like when she finishes her meal or sleeps at correct time😁<br>I love seeing her smile light up the room💗,and 
             <span class="bg-blue-700">I’m committed to being her constant , because her happiness is my favorite accomplishment,</span>
         </p>
-         <!-- Word Coach Section -->
     <div class="mt-6 w-full max-w-2xl p-8 rounded-lg">
         <div class="flex justify-between items-center">
             <div class="grid grid-cols-3 gap-4 mb-4">
@@ -233,7 +221,6 @@ input {
 
     </div>
 
-    <!-- Images -->
     <div id="image-container" class="w-full flex flex-wrap justify-center bg-gray-900 p-0" style="display: none;">
         <div class="w-1/2 p-2">
             <div class="bg-gray-800 rounded-lg p-2">
@@ -261,7 +248,6 @@ input {
         </div>
     </div>
 
-    <!-- Video Container -->
     <div id="video-container" style="display: none;">
         <div class="bg-gray-800 rounded-lg p-0">
             <video controls class="w-full rounded-lg">
@@ -277,14 +263,11 @@ input {
         </div>
     </div>
 
-
-    <!-- People Also Ask -->
     <div id="people-ask-container" style="display: block;">
        
    
     </div>
 
-    <!-- Footer Navigation -->
     <div class="fixed bottom-0 left-0 right-0 bg-gray-800 p-2 flex justify-around items-center">
         <div class="flex flex-col items-center cursor-pointer" onclick="activateTab('home')">
             <i class="fas fa-home text-gray-400" id="home-icon"></i>
@@ -303,10 +286,10 @@ input {
 <style>
     @keyframes glow {
         0% {
-            text-shadow: 0 0 10px rgb(255, 0, 183), 0 0 20px rgb(255, 0, 183), 0 0 30px rgb(255, 0, 183), 0 0 40px rgb(255, 0, 183), 0 0 50px rgb(255, 0, 183), 0 0 60px rgb(255, 0, 183), 0 0 70px rgb(255, 0, 183);
+            text-shadow: 0 0 10px rgb(0, 255, 128), 0 0 20px rgb(0, 255, 162), 0 0 30px rgb(0, 255, 102), 0 0 40px rgb(0, 255, 110), 0 0 50px rgb(0, 255, 94), 0 0 60px rgb(0, 255, 102), 0 0 70px rgb(0, 255, 119);
         }
         100% {
-            text-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #00f, 0 0 40px #00f, 0 0 50px #00f, 0 0 60px #00f, 0 0 70px #00f;
+            text-shadow: 0 0 10px rgb(0, 132, 255), 0 0 20px rgb(0, 102, 255), 0 0 30px rgb(0, 132, 255), 0 0 40px rgb(0, 149, 255), 0 0 50px rgb(0, 123, 255), 0 0 60px rgb(0, 102, 255), 0 0 70px rgb(0, 115, 255);
         }
     }
     .glow {
@@ -318,7 +301,7 @@ input {
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
+        height: 110%;
         background: rgba(0, 0, 0, 0.7);
         display: flex;
         align-items: center;
@@ -336,7 +319,7 @@ input {
 <script>
     function addText(element) {
         if (!element.innerHTML) {
-            element.innerHTML = '<span class="text-white-500 text-4xl glow">A</span>';
+            element.innerHTML = '<span class="text-white-500 text-4xl glow">K</span>';
             setTimeout(addRandomR, 700);
             setTimeout(checkWin, 100);
         }
@@ -354,14 +337,14 @@ input {
     function checkWin() {
         const boxes = document.querySelectorAll('.grid div');
         const winPatterns = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
-            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
-            [0, 4, 8], [2, 4, 6]             // Diagonals
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], 
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], 
+            [0, 4, 8], [2, 4, 6]             
         ];
 
         winPatterns.forEach(pattern => {
             const [a, b, c] = pattern;
-            if (boxes[a].innerText === 'A' && boxes[b].innerText === 'A' && boxes[c].innerText === 'A') {
+            if (boxes[a].innerText === 'K' && boxes[b].innerText === 'K' && boxes[c].innerText === 'K') {
                 drawLine(a, c);
                 displayWinMessage();
             }
@@ -394,11 +377,10 @@ input {
     function displayWinMessage() {
     const overlay = document.createElement('div');
     overlay.classList.add('overlay');
-    overlay.innerText = 'My Pondati Always Wins';
+    overlay.innerText = 'My Wife Always Wins';
 
-    // Add click event to reload the page
     overlay.addEventListener('click', () => {
-        window.location.href = 'searchR13.html'; // Change to your target URL
+        window.location.href = 'searchR13.html'; 
     });
 
     document.body.appendChild(overlay);
