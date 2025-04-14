@@ -150,9 +150,9 @@
     
 <style>
 input {
-    min-width: 0; /* Prevents input from exceeding its container */
-    max-width: calc(100% - 50px); /* Adjust this based on your icon sizes */
-    white-space: nowrap; /* Ensures text stays on one line */
+    min-width: 0;
+    max-width: calc(100% - 50px); 
+    white-space: nowrap; 
 }
 
 
@@ -247,7 +247,7 @@ input {
       or
      </div>
      <button class="w-full bg-gray-700 text-white py-2 rounded-lg" id="option2" onclick="handleClick(this, true)">
-      Chellakutty manichiruda
+      Chellakutty manichiru ma
      </button>
     </div>
     <div class="flex justify-center mt-4 space-x-2">
@@ -368,14 +368,14 @@ input {
 
     questionElement.innerHTML = 'How do you <span class="italic">want</span> me to apologize?';
     option1.innerText = '1000 time sorry';
-    option2.innerText = 'Mallipoo';
+    option2.innerText = 'Veliya Kootitu Pooganum';
 
     option1.classList.remove('bg-green-500', 'bg-red-500');
     option1.classList.add('bg-gray-700');
     option2.classList.remove('bg-green-500', 'bg-red-500');
     option2.classList.add('bg-gray-700');
 
-    option1.onclick = function() { handleNextClick(this, false); };
+    option1.onclick = function() { handleNextClick(this, true); };
     option2.onclick = function() { handleNextClick(this, true); };
 
 
@@ -426,7 +426,7 @@ input {
       const hearts = document.querySelectorAll('.heart');
  
       questionElement.innerHTML = 'Will you <span class="italic">forgive</span> me?';
-      option1.innerText = 'pandren';
+      option1.innerText = 'serii';
       option2.innerText = 'panna maaten';
  
       option1.classList.remove('bg-green-500', 'bg-red-500');
@@ -435,7 +435,7 @@ input {
       option2.classList.add('bg-gray-700');
  
       option1.onclick = function() { handleThirdClick(this, true); };
-      option2.onclick = function() { handleThirdClick(this, false); };
+      option2.onclick = function() { handleThirdClick(this, true); };
  
       // Keep the first and second heart's color as it was
       if (hearts[0].classList.contains('text-green-500')) {
@@ -499,9 +499,8 @@ input {
       option2.classList.add('bg-gray-700');
  
       option1.onclick = function() { handleFourthClick(this, true); };
-      option2.onclick = function() { handleFourthClick(this, false); };
+      option2.onclick = function() { handleFourthClick(this, true); };
  
-      // Keep the first, second, and third heart's color as it was
       if (hearts[0].classList.contains('text-green-500')) {
         hearts[0].classList.add('text-green-500');
       } else if (hearts[0].classList.contains('text-red-500')) {
@@ -534,7 +533,6 @@ input {
         btn.innerHTML = btn.innerText.trim();
       });
  
-      // Set the clicked button and corresponding heart
       if (isCorrect) {
         button.classList.add('bg-green-500');
         button.innerHTML = '<i class="fas fa-check mr-2"></i>' + button.innerText.trim();
@@ -549,7 +547,6 @@ input {
  
       scoreElement.innerHTML = 'Score • <span class="text-green-500">' + currentScore + '</span>';
  
-      // Display final message
       setTimeout(displayFinalMessage, 1000);
     }
  
@@ -561,9 +558,9 @@ input {
  
       questionElement.innerText = 'Sorry Chellam';
       questionElement.classList.add('text-4xl', 'font-bold', 'text-center');
-      optionsContainer.innerHTML = ''; // Remove all options
-      scoreElement.innerText = ''; // Remove the score
-      wordCoachElement.innerText = ''; // Remove the WORD COACH text
+      optionsContainer.innerHTML = ''; 
+      scoreElement.innerText = ''; 
+      wordCoachElement.innerText = ''; 
     }
    </script>
 
