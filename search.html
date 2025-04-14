@@ -7,21 +7,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         @keyframes rainbow {
-            0% { color: red; }
-            16% { color: orange; }
-            32% { color: yellow; }
+            0% { color: rgb(0, 128, 255); }
+            16% { color: rgb(0, 255, 102); }
+            32% { color: rgb(0, 170, 255); }
             48% { color: green; }
-            64% { color: blue; }
-            80% { color: indigo; }
-            100% { color: violet; }
+            64% { color: rgb(0, 98, 255); }
+            80% { color: rgb(20, 130, 0); }
+            100% { color: rgb(0, 134, 223); }
         }
         .rainbow-text {
             animation: rainbow 2s infinite;
         }
         .rotate-arrow {
-           display: inline-block; /* Ensure transform applies correctly */
+           display: inline-block; 
            transform: rotate(220deg);
-           transition: transform 0.3s; /* Optional: for a smooth transition */
+           transition: transform 0.3s; 
         }
 
     </style>
@@ -31,7 +31,7 @@
             const items = document.querySelectorAll('.search-item');
             const specialItems = document.querySelectorAll('.special-item');
             
-            if (input === 'aishwaryarajesh') {
+            if (input === '💚💙' || input === '💙💚') {
                 items.forEach(item => item.style.display = 'none');
                 specialItems.forEach(item => item.style.display = 'flex');
             } else {
@@ -53,7 +53,7 @@
         }
 
         function redirectToPage(page) {
-    window.location.href = page; // Redirect to the specified page
+    window.location.href = page;
 }
     </script>
 </head>
@@ -69,91 +69,72 @@
         <div class="space-y-4">
             <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('Cute ways to surprise my pondati'); redirectToPage('searchR1.html');">
                 <i class="fas fa-history text-gray-400"></i>
-                <span class="ml-4 flex-grow">Cute ways to surprise my pondati</span>
-                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
-            </div>
-            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to make my wife smile on a tough day'); redirectToPage('searchR2.html');">
-                <i class="fas fa-history text-gray-400"></i>
-                <span class="ml-4 flex-grow">How to make my wife smile on a tough day</span>
-                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
-            </div>
-            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('Best love songs to dedicate to my wife'); redirectToPage('searchall.html');">
-                <i class="fas fa-history text-gray-400"></i>
-                <span class="ml-4 flex-grow">Best love songs to dedicate to my wife</span>
-                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
-            </div>
-            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to express love without saying I love you'); redirectToPage('searchall.html');">
-                <i class="fas fa-history text-gray-400"></i>
-                <span class="ml-4 flex-grow">How to express love without saying I love you</span>
-                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
-            </div>
-            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to support my wife through tough times'); redirectToPage('searchall.html');">
-                <i class="fas fa-history text-gray-400"></i>
-                <span class="ml-4 flex-grow">How to support my wife through tough times</span>
+                <span class="ml-4 flex-grow">Cute ways to surprise my wife💚</span>
                 <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
             </div>
             <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to apologize to my wife after a small fight'); redirectToPage('searchR6.html');">
                 <i class="fas fa-history text-gray-400"></i>
-                <span class="ml-4 flex-grow">How to apologize to my wife after a small fight</span>
-                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
-            </div>
-            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to make a homemade gift for her'); redirectToPage('searchall.html');">
-                <i class="fas fa-history text-gray-400"></i>
-                <span class="ml-4 flex-grow">How to make a homemade gift for her</span>
-                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
-            </div>
-            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('Romantic dinner recipes to cook together'); redirectToPage('searchall.html');">
-                <i class="fas fa-history text-gray-400"></i>
-                <span class="ml-4 flex-grow">Romantic dinner recipes to cook together</span>
-                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
-            </div>
-            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to make her feel special every day'); redirectToPage('searchall.html');">
-                <i class="fas fa-history text-gray-400"></i>
-                <span class="ml-4 flex-grow">How to make her feel special every day</span>
+                <span class="ml-4 flex-grow">How to apologize to my wife after a small fight😢</span>
                 <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
             </div>
             <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('Cute ways to say I love you'); redirectToPage('searchR10.html');">
                 <i class="fas fa-history text-gray-400"></i>
-                <span class="ml-4 flex-grow">Cute ways to say I love you</span>
-                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
-            </div>
-            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('Ways to support my partner’s hobbies'); redirectToPage('searchall.html');">
-                <i class="fas fa-history text-gray-400"></i>
-                <span class="ml-4 flex-grow">Ways to support my partner’s hobbies</span>
+                <span class="ml-4 flex-grow">Cute ways to say I love you💚💙</span>
                 <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
             </div>
             <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to calculate our love'); redirectToPage('searchR11.html');">
                 <i class="fas fa-history text-gray-400"></i>
-                <span class="ml-4 flex-grow">How to calculate our love</span>
+                <span class="ml-4 flex-grow">How to calculate our love😌🥰</span>
                 <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
             </div>
             <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('How to support my wife dreams'); redirectToPage('searchR13.html');">
                 <i class="fas fa-history text-gray-400"></i>
-                <span class="ml-4 flex-grow">How to support my wife dreams</span>
-                <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
-            </div>
-            <div class="flex items-center search-item cursor-pointer" onclick="fillSearchField('Who is the best couple'); redirectToPage('searchall.html');">
-                <i class="fas fa-history text-gray-400"></i>
-                <span class="ml-4 flex-grow">Who is the best couple</span>
+                <span class="ml-4 flex-grow">How to support my wife dreams🪄</span>
                 <i class="fas fa-arrow-right text-gray-400 rotate-arrow"></i>
             </div>
             <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;">
-                <span class="ml-4 flex-grow">Aishwaryarajesh Line 1</span>
+                <span class="ml-4 flex-grow">♡ Your voice lives in my heart,</span>
             </div>
             <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
-                <span class="ml-4 flex-grow">Aishwaryarajesh Line 2</span>
+                <span class="ml-4 flex-grow">♡ More love, More respect, Only for you,</span>
             </div>
             <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
-                <span class="ml-4 flex-grow">Aishwaryarajesh Line 3</span>
+                <span class="ml-4 flex-grow">♡ You talk, I fall, You smile, I melt, Simple,</span>
             </div>
             <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
-                <span class="ml-4 flex-grow">Aishwaryarajesh Line 4</span>
+                <span class="ml-4 flex-grow">♡ With you, even silence feels like love,</span>
             </div>
             <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
-                <span class="ml-4 flex-grow">Aishwaryarajesh Line 5</span>
+                <span class="ml-4 flex-grow">♡ You’re not a moment. You’re my forever,</span>
             </div>
             <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
-                <span class="ml-4 flex-grow">Aishwaryarajesh Line 6</span>
+                <span class="ml-4 flex-grow">♡ I didn’t just meet you, I met my peace,</span>
+            </div>
+            <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
+                <span class="ml-4 flex-grow">♡ No filter, no script, just pure love for you,</span>
+            </div>
+            <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;">
+                <span class="ml-4 flex-grow">♡ Loving you feels like breathing, natural, effortless, endless,</span>
+            </div>
+            <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
+                <span class="ml-4 flex-grow">♡ You’re my favorite person to think about every hour, every minute,</span>
+            </div>
+            <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
+                <span class="ml-4 flex-grow">♡ I don’t just admire you I respect, protect, and adore you,</span>
+            </div>
+
+            <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
+                <span class="ml-4 flex-grow">♡ You pick the place, I’ll pick the playlist, let’s go out and get lost together,</span>
+            </div>
+    
+            <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
+                <span class="ml-4 flex-grow">♡ One day, it’ll be just us making late-night noodles and laughing at nothing,</span>
+            </div>
+            <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none;" >
+                <span class="ml-4 flex-grow">♡ I didn’t just meet you, I met my peace,</span>
+            </div>
+            <div class="flex items-center special-item cursor-pointer rainbow-text" style="display: none; margin-left: 13%;" >
+                <span class="ml-10 flex-grow">♡ I LOVE YOU KAVI MA ♡</span>
             </div>
         </div>
     </div>
